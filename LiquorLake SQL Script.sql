@@ -60,6 +60,26 @@ VALUES
 (085000017739,3,'Lamarca Prosecco',17.99,750,'Italy','Medium',NULL,'Prosecco', ' 750 ml bottle of Lamarca Prosecco'),
 (620213015457,2,'Bacardi White',23.99,750,NULL,NULL,NULL,'Bacardi',' Single 750 ml bottle of Bacardi White'),
 (056327073234,1,'Molson Canadian 8 Pack',17.99,355,NULL,NULL,NULL,'Molson Canadian','8 Pack of Molson Canadian, 355 ml per can')
+GO
 
-select * from Product
+/*******************************************************************************************************************************
 
+					STORED PROCEDURES
+
+*******************************************************************************************************************************/
+
+CREATE PROCEDURE GetProducts
+AS
+	SELECT Product.UPC,
+		   Categories.CategoryID,
+		   Categories.CategoryName,
+		   Product.Name,
+		   Product.Size,
+		   ISNULL(Product.CountryOfOrigin, 'N/A') AS CountryOfOrigin,
+		   ISNULL(Product.WineSweetnessIndex, 'N/A') AS WineSweetnessIndex,
+		   ISNULL(Product.Image, 'N/A') AS Image,
+		   Product.Company,
+		   Product.Description	   
+	FROM Product
+	INNER JOIN Categories ON Product.CategoryID = Categories.CategoryID
+GO
