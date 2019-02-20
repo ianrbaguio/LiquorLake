@@ -18,7 +18,7 @@
                 LIQUOR LAKE
             </div>
             <div style="float: right; padding: 25px;">
-                <asp:HyperLink ID="AboutUsHyperLink" runat="server">About Us</asp:HyperLink>
+                <asp:HyperLink ID="AboutUsHyperLink" NavigateUrl="~/Default.aspx" runat="server">About Us</asp:HyperLink>
                 <asp:HyperLink ID="FlyerHyperLink" runat="server">Flyer</asp:HyperLink>
                 <asp:HyperLink ID="CatalogHyperLink" NavigateUrl="~/ViewCatalog.aspx" runat="server">Catalog</asp:HyperLink>
                 <asp:HyperLink ID="ContactUsHyperLink" runat="server">Contact Us</asp:HyperLink>
