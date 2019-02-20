@@ -8,10 +8,10 @@ using System.Web;
 /// </summary>
 public class LLMS
 {
-    public LLMS()
+    public List<Product> FindProducts()
     {
-        //
-        // TODO: Add constructor logic here
-        //
+        Products productManager = new Products();
+
+        return productManager.GetProducts();
     }
 }

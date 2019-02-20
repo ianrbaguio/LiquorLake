@@ -14,11 +14,13 @@ public class Product
 
     public string Name { get; set; }
 
-    public double Size { get; set; }
+    public int Size { get; set; }
+
+    public decimal Price { get; set; }
 
     public string CountryOfOrigin { get;set;}
 
-    public int WineSweetnessIndex { get; set; }
+    public string WineSweetnessIndex { get; set; }
 
     public string ImageUrl { get; set; }
 

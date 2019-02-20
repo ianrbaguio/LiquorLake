@@ -17,7 +17,7 @@ CREATE TABLE Product(
 	CategoryID INT NOT NULL,
 	Name nvarchar(50) NOT NULL,
 	Price money NOT NULL,
-	Size decimal(10,2) NOT NULL,
+	Size INT NOT NULL,
 	CountryOfOrigin nvarchar(50) NULL,
 	WineSweetnessIndex nvarchar(15) NULL,
 	Image nvarchar(50) NULL,
@@ -73,6 +73,7 @@ AS
 	SELECT Product.UPC,
 		   Categories.CategoryID,
 		   Categories.CategoryName,
+		   Product.Price,
 		   Product.Name,
 		   Product.Size,
 		   ISNULL(Product.CountryOfOrigin, 'N/A') AS CountryOfOrigin,
@@ -83,3 +84,5 @@ AS
 	FROM Product
 	INNER JOIN Categories ON Product.CategoryID = Categories.CategoryID
 GO
+
+EXEC GetProducts

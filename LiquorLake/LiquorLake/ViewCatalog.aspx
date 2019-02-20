@@ -36,6 +36,9 @@
                     </asp:DropDownList>
                 </div>
             </div>
+            <div id="ProductsDiv" style="float:right;" runat="server">
+
+            </div>
         </div>
 
         <div id="FreeLiquorIconReference" style="clear:both;">
