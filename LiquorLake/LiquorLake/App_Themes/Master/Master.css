@@ -35,6 +35,8 @@ ul{
 .liquor_lake_default_image{
     width:100%; 
     background-image:url('/App_Themes/Master/Images/LiquorLake.png'); 
+    background-size:100%;
+    background-repeat:no-repeat;
     flex-grow:1;
     opacity: 0.5;
     box-shadow: 25px 25px 25px black inset;
