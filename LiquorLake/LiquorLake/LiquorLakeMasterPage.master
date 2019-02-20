@@ -1,0 +1,38 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="LiquorLakeMasterPage.master.cs" Inherits="LiquorLakeMasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Liquor Lake</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="stylesheet" href="/App_Themes/Master/Master.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <form id="LiquorLakeForm" runat="server">
+        <div id="LiquorLakeHeader" class="liquor_lake_header">
+            <div style="float: left; padding: 20px; font-size: 25px; font-weight: bold;">
+                LIQUOR LAKE
+            </div>
+            <div style="float: right; padding: 25px;">
+                <asp:HyperLink ID="AboutUsHyperLink" runat="server">About Us</asp:HyperLink>
+                <asp:HyperLink ID="FlyerHyperLink" runat="server">Flyer</asp:HyperLink>
+                <asp:HyperLink ID="CatalogHyperLink" NavigateUrl="~/ViewCatalog.aspx" runat="server">Catalog</asp:HyperLink>
+                <asp:HyperLink ID="ContactUsHyperLink" runat="server">Contact Us</asp:HyperLink>
+            </div>
+        </div>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div id="LiquorLakeFooter">
+
+        </div>
+    </form>
+    <asp:ContentPlaceHolder ID="jQueryPlaceHolder" runat="server">
+    </asp:ContentPlaceHolder>
+</body>
+</html>
