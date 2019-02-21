@@ -36,7 +36,7 @@
                     </asp:DropDownList>
                 </div>
             </div>
-            <div id="ProductsDiv" style="float:right;" runat="server">
+            <div id="ProductsDiv" style="float:right; max-width:80%; padding: 0 25px;" runat="server">
 
             </div>
         </div>

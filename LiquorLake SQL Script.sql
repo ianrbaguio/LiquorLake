@@ -8,9 +8,24 @@
 
 *****************************************************************/
 
-drop database LiquorLake
+-- DROP DATABASE LiquorLake
 CREATE DATABASE LiquorLake
 GO
+
+USE LiquorLake
+GO
+
+-- Table Creations
+CREATE TABLE Categories(
+	CategoryID INT IDENTITY(1,1) NOT NULL,
+	CategoryName NVARCHAR(50) NOT NULL,
+	Description NVARCHAR(50) NOT NULL
+)
+
+ALTER TABLE Categories
+	ADD CONSTRAINT PK_Categories_CategoryID PRIMARY KEY CLUSTERED (CategoryID)
+GO
+
 
 CREATE TABLE Product(
 	UPC nvarchar(12) NOT NULL,
@@ -30,25 +45,13 @@ ALTER TABLE Product
 		CONSTRAINT FK_Product_CategoryID FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
 GO
 
-CREATE TABLE Categories(
-	CategoryID INT IDENTITY(1,1) NOT NULL,
-	CategoryName NVARCHAR(50) NOT NULL,
-	Description NVARCHAR(50) NOT NULL
-)
-
-ALTER TABLE Categories
-	ADD CONSTRAINT PK_Categories_CategoryID PRIMARY KEY CLUSTERED (CategoryID)
-GO
-
-
+-- Insert Datas
 INSERT INTO Categories
 (CategoryName, Description)
 VALUES
 ('Beer', 'Beer'),
 ('Spirits', 'Spirits'),
 ('Wine', 'Wine')
-
-select * from Categories
 
 INSERT INTO Product
 (UPC,CategoryID,Name,Price,Size,CountryOfOrigin, WineSweetnessIndex, Image, Company,Description)

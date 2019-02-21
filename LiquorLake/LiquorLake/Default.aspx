@@ -26,8 +26,8 @@
             </ul>
 
         </div>
-        <div id="AboutUsImageSection" style="display:flex; width:50%; float:right; flex: 1;">
-            <img src="App_Themes/Master/Images/LiquorLake.png" />
+        <div id="AboutUsImageSection" style="width:50%; float:right; flex: 1;">
+            <img src="App_Themes/Master/Images/LiquorLake.png" style="width:80%;" />
         </div>
     </div>
 </asp:Content>

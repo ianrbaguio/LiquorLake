@@ -20,10 +20,11 @@ public partial class ViewCatalog : System.Web.UI.Page
 
         foreach(Product p in products)
         {
-            string html = "<div id='" + p.UPC + "' style='display:inline-block;'>";
-            html += "<img src='" + p.ImageUrl + "'/> <br/>";
+            string html = "<div id='" + p.UPC + "' style='display:inline-block; min-width:200px; min-height:200px; border: 1px solid black; text-align:center; padding:10px 0;'>";
+            html += "<img src='/App_Themes/Catalog/Images/liquor_placeholder.png' style='width:100px; height:100px;'/> <br/>";
             html += "<b>" + p.Name + "</b> <br/>";
-            html += "<b>" + p.Price + "</b>";
+            html += "<b>" + p.Price.ToString("C2") + "</b>";
+            html += "</div>";
 
             ProductsDiv.InnerHtml += html;
         }
