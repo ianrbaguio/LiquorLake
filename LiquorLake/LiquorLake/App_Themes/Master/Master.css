@@ -7,11 +7,11 @@
 a{
     padding: 0 10px;
     text-decoration:none;
-    color:red;   
+    color:yellow;   
 }
 
 a:hover{
-    color: black;
+    color: red;
 }
 
 ul{
@@ -20,10 +20,10 @@ ul{
 }
 
 .liquor_lake_header{
-    color: red;
+    color: yellow;
     width: 100%; 
     height: 75px; 
-    background-color: yellow;
+    background-color: darkblue;
 }
 
 /***********************************
@@ -50,7 +50,7 @@ ul{
     position:absolute;
     font-size:80px;
     font-weight:bold;
-    color:red;
+    color:yellow;
 }
 
 .liquor_lake_caret_down:hover{
