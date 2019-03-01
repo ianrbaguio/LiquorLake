@@ -30,6 +30,13 @@
             <img src="App_Themes/Master/Images/LiquorLake.png" style="width:80%;" />
         </div>
     </div>
+    <hr />
+    <div id="SearchByCategoriesDiv">
+        <h2>SEARCH BY CATEGOREIS</h2>
+        <div id="CategoriesContainer" style="text-align:center;" runat="server">
+
+        </div>
+    </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="jQueryPlaceHolder" Runat="Server">
     <script type="text/javascript">

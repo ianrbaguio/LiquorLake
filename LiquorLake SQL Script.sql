@@ -80,7 +80,8 @@ GO
 
 *******************************************************************************************************************************/
 
-CREATE PROCEDURE GetProducts
+DROP PROCEDURE GetProducts
+CREATE PROCEDURE GetProducts(@CategoryID INT = NULL)
 AS
 	SELECT Product.UPC,
 		   Categories.CategoryID,
@@ -95,6 +96,16 @@ AS
 		   Product.Description	   
 	FROM Product
 	INNER JOIN Categories ON Product.CategoryID = Categories.CategoryID
+	WHERE Product.CategoryID = CASE WHEN @CategoryID IS NULL OR @CategoryID = 0 THEN Product.CategoryID ELSE @CategoryID END
 GO
 
-EXEC GetProducts
+
+CREATE PROCEDURE GetCategories
+AS
+	SELECT CategoryID,
+		   CategoryName,
+		   Description
+	FROM Categories
+GO
+
+EXEC GetProducts 2
