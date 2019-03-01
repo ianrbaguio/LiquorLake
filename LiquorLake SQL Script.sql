@@ -45,7 +45,7 @@ ALTER TABLE Product
 		CONSTRAINT FK_Product_CategoryID FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
 GO
 
--- Insert Datas
+-- Insert Data
 INSERT INTO Categories
 (CategoryName, Description)
 VALUES
@@ -62,7 +62,16 @@ VALUES
 (620213190000,2,'Bombay Sapphire Gin',27.99,750,NULL,NULL,NULL,'Bombay','Single 750 ml bottle of Bombay Sapphire Gin'),
 (085000017739,3,'Lamarca Prosecco',17.99,750,'Italy','Medium',NULL,'Prosecco', ' 750 ml bottle of Lamarca Prosecco'),
 (620213015457,2,'Bacardi White',23.99,750,NULL,NULL,NULL,'Bacardi',' Single 750 ml bottle of Bacardi White'),
-(056327073234,1,'Molson Canadian 8 Pack',17.99,355,NULL,NULL,NULL,'Molson Canadian','8 Pack of Molson Canadian, 355 ml per can')
+(056327073234,1,'Molson Canadian 8 Pack',17.99,355,NULL,NULL,NULL,'Molson Canadian','8 Pack of Molson Canadian, 355 ml per can'),
+(010391100753,2,'Drambuie',34.99,750,NULL,NULL,NULL,'Single 750 ml bottle of Drambuie scotch whisky'),
+(786150000168,1,'Stella Artois 12 Pack',31.99,300,NULL,NULL,NULL, '12 pack of stella artois, 300ml per bottle'),
+(3245990250203,2,'Hennessy VS Cognac',49.99,750,'France',NULL,NULL,'Single 750 ml bottle of Hennessy VS Cognac'),
+(089121288122,3,'J. Lohr Seven Oaks Cabernet Sauvignon',24.99,750,'USA','Dry',NULL,'Single 750 ml bottle of J. Lohr Seven Oaks Cabernet Sauvignon'),
+(776103000666,2,'Jose Cuervo Tequila',39.99,750,NULL,NULL,NULL,'Single 750 ml bottle of Jose Cuervo Tequila'),
+(088544016770,2,'Southern Comfort',27.99,750,NULL,NULL,NULL,'Single 750 ml bottle of Southern Comfort whiskey'),
+(087000150393,2,'Captain Morgan Deluxe',27.49,750,NULL,NULL,NULL, 'Single 750 ml bottle of Captain Morgan Deluxe dark rum'),
+(089540454061,2,'Kahlua',29.99,750,NULL,NULL,NULL,'Single 750 ml bottle of Kahlua coffee flavoured rum'),
+(9419227006275,3,'Kim Crawford Sauvignon',19.99,750,'New Zealand' ,'Extra Dry',NULL,'Single 750 ml bottle of Kim Crawford Sauvignon white wine')
 GO
 
 /*******************************************************************************************************************************
