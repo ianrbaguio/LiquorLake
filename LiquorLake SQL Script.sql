@@ -80,7 +80,7 @@ GO
 
 *******************************************************************************************************************************/
 
-DROP PROCEDURE GetProducts
+--DROP PROCEDURE GetProducts
 CREATE PROCEDURE GetProducts(@CategoryID INT = NULL)
 AS
 	SELECT Product.UPC,
