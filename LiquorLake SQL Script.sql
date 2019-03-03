@@ -15,6 +15,8 @@ GO
 USE LiquorLake
 GO
 
+--USE raybains_liquorlake
+
 -- Table Creations
 CREATE TABLE Categories(
 	CategoryID INT IDENTITY(1,1) NOT NULL,
@@ -53,6 +55,7 @@ VALUES
 ('Spirits', 'Spirits'),
 ('Wine', 'Wine')
 
+SELECT * FROM Product
 INSERT INTO Product
 (UPC,CategoryID,Name,Price,Size,CountryOfOrigin, WineSweetnessIndex, Image, Company,Description)
 VALUES
@@ -80,7 +83,6 @@ GO
 
 *******************************************************************************************************************************/
 
-DROP PROCEDURE GetProducts
 CREATE PROCEDURE GetProducts(@CategoryID INT = NULL)
 AS
 	SELECT Product.UPC,
@@ -108,4 +110,3 @@ AS
 	FROM Categories
 GO
 
-EXEC GetProducts 2
