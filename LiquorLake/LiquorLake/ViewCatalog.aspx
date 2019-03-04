@@ -19,9 +19,9 @@
         </div>
 
         <div id="ViewCatalogContent" style="clear: both; padding: 20px 0;">
-            <div id="ViewCatalogFilterContainer" style="float: left; width: 180px; text-align: center; background-color: darkblue; color: yellow; border-radius: 5px;">
-                FILTER
-                <div id="CategoriesFilter" style="margin:5px; background-color: white;  ">
+            <div id="ViewCatalogFilterContainer" style="float: left; width: 180px; text-align: center; background-color: black; border-radius: 5px;">
+                <div style="color:yellow; font-size:25px; padding:5px;">FILTER</div>
+                <div id="CategoriesFilter" style="margin:5px; color:black; background-color: white;  ">
                     <h3>CATEGORIES</h3>
                     <asp:CheckBoxList runat="server">
                         <asp:ListItem>Beers</asp:ListItem>
@@ -29,7 +29,7 @@
                         <asp:ListItem>Wines</asp:ListItem>
                     </asp:CheckBoxList>
                 </div>
-                <div id="CompanyFilter" style="margin:5px; background-color: white;  ">
+                <div id="CompanyFilter" style="margin:5px; color:black; background-color: white;  ">
                     <h3>COMPANY</h3>
                     <asp:DropDownList ID="CompanyDropDownList" runat="server">
                         <asp:ListItem Value="All">All</asp:ListItem>

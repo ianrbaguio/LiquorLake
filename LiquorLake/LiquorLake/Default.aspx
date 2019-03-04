@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/LiquorLakeMasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
-
+<%-- This is a comment made by Tim. --%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -30,6 +30,16 @@
             <img src="App_Themes/Master/Images/LiquorLake.png" style="width:80%;" />
         </div>
     </div>
+    <hr />
+    <div id="SearchByCategoriesDiv">
+        <h2>SEARCH BY CATEGOREIS</h2>
+        <div id="CategoriesContainer" style="text-align:center;" runat="server">
+
+        </div>
+    </div>
+     <div id="FreeLiquorIconReference" style="clear:both;">
+            <div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+        </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="jQueryPlaceHolder" Runat="Server">
     <script type="text/javascript">

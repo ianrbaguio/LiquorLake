@@ -4,3 +4,11 @@
 input{
 
 }
+
+.product_info{
+    color:darkblue;
+}
+
+.product_info:hover{
+    color:red;
+}
