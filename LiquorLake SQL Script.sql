@@ -110,3 +110,32 @@ AS
 GO
 
 EXEC GetProducts 2
+
+DROP PROCEDURE SearchProducts
+CREATE PROCEDURE SearchProducts(@Keyword varchar(100) = NULL)
+AS
+
+IF @Keyword IS NULL
+	RAISERROR('SearchProducts - Required parameter: @Keyword',16,1)
+ELSE
+	SELECT
+		   Product.UPC,
+		   Categories.CategoryID,
+		   Categories.CategoryName,
+		   Product.Price,
+		   Product.Name,
+		   Product.Size,
+		   ISNULL(Product.CountryOfOrigin, 'N/A') AS CountryOfOrigin,
+		   ISNULL(Product.WineSweetnessIndex, 'N/A') AS WineSweetnessIndex,
+		   ISNULL(Product.Image, 'N/A') AS Image,
+		   Product.Company,
+		   Product.Description	
+	FROM Product
+	INNER JOIN Categories ON Product.CategoryID = Categories.CategoryID
+	WHERE Product.Name LIKE '%'+ @Keyword +'%' OR Product.Description LIKE '%' + @Keyword + '%'
+GO
+
+EXEC SearchProducts 'Whisky'
+
+select * from Product
+select * from Categories
