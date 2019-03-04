@@ -24,7 +24,7 @@ public partial class ViewCatalog : System.Web.UI.Page
             html += "<img src='/App_Themes/Catalog/Images/liquor_placeholder.png' style='width:100px; height:100px;'/> <br/>";
             html += "<b>" + p.Name + "</b> <br/>";
             html += "<b>" + p.Price.ToString("C2") + "</b> <br/>";
-            html += "<a>More info</a>";
+            html += "<a class='more_info'>More info</a>";
             html += "</div>";
 
             ProductsDiv.InnerHtml += html;

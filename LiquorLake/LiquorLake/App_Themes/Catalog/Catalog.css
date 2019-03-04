@@ -4,3 +4,11 @@
 input{
 
 }
+
+.more_info{
+    color:darkblue;
+}
+
+.more_info:hover{
+    color:red;
+}

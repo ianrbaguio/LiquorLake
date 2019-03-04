@@ -1,4 +1,10 @@
-﻿html,body {
+﻿/********************************************************************************
+    BackColor: black
+    ForeColor: yellow
+
+********************************************************************************/
+
+html,body {
     margin:0;
     height: 100%;
     min-height:100%;
@@ -23,7 +29,7 @@ ul{
     color: yellow;
     width: 100%; 
     height: 75px; 
-    background-color: darkblue;
+    background-color: black;
 }
 
 /***********************************
