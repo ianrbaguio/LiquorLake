@@ -9,13 +9,20 @@ public partial class ViewCatalog : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        int iCategoryID = 0;
+
+        if(Request.QueryString["category"] != null)
+        {
+            iCategoryID = int.Parse(Request.QueryString["category"]);
+        }
+
         LLMS LiquorLakeManager = new LLMS();
 
         List<Product> products = new List<Product>();
 
         if(Request.QueryString["keyword"] == null)
         {
-            products = LiquorLakeManager.FindProducts();
+            products = LiquorLakeManager.FindProducts(iCategoryID);
         }
 
         foreach(Product p in products)
@@ -24,7 +31,7 @@ public partial class ViewCatalog : System.Web.UI.Page
             html += "<img src='/App_Themes/Catalog/Images/liquor_placeholder.png' style='width:100px; height:100px;'/> <br/>";
             html += "<b>" + p.Name + "</b> <br/>";
             html += "<b>" + p.Price.ToString("C2") + "</b> <br/>";
-            html += "<a class='more_info'>More info</a>";
+            html += "<a class='product_info'>More info</a>";
             html += "</div>";
 
             ProductsDiv.InnerHtml += html;

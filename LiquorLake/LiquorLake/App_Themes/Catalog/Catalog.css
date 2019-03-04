@@ -5,10 +5,10 @@ input{
 
 }
 
-.more_info{
+.product_info{
     color:darkblue;
 }
 
-.more_info:hover{
+.product_info:hover{
     color:red;
 }

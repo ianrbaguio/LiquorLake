@@ -8,10 +8,17 @@ using System.Web;
 /// </summary>
 public class LLMS
 {
-    public List<Product> FindProducts()
+    public List<Product> FindProducts(int categoryid)
     {
         Products productManager = new Products();
 
-        return productManager.GetProducts();
+        return productManager.GetProducts(categoryid);
+    }
+
+    public List<Category> FindCategories()
+    {
+        Categories categoriesManager = new Categories();
+
+        return categoriesManager.SearchCategories();
     }
 }

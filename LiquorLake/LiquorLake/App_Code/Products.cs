@@ -11,7 +11,7 @@ using System.Configuration;
 /// </summary>
 public class Products
 {
-    public List<Product> GetProducts()
+    public List<Product> GetProducts(int categoryid)
     {
         SqlConnection liquorLakeConn = new SqlConnection { ConnectionString = ConfigurationManager.ConnectionStrings["LiquorLakeConnection"].ConnectionString };
 
@@ -23,6 +23,16 @@ public class Products
             CommandType = CommandType.StoredProcedure,
             Connection = liquorLakeConn
         };
+
+        SqlParameter categoryIDParameter = new SqlParameter()
+        {
+            ParameterName = "@CategoryID",
+            SqlValue = categoryid,
+            SqlDbType = SqlDbType.Int,
+            Direction = ParameterDirection.Input
+        };
+
+        getProductsCmd.Parameters.Add(categoryIDParameter);
 
         SqlDataReader productsReader = getProductsCmd.ExecuteReader();
 

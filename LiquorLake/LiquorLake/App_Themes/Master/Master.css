@@ -62,3 +62,11 @@ ul{
 .liquor_lake_caret_down:hover{
     cursor:pointer;
 }
+
+.category_link{
+    color: darkblue;
+}
+
+.category_link:hover{
+    color:red;
+}
