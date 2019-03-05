@@ -21,4 +21,11 @@ public class LLMS
 
         return categoriesManager.SearchCategories();
     }
+
+    public List<Product> SearchProduct(string keyword)
+    {
+        Products productManager = new Products();
+
+        return productManager.SearchProduct(keyword);
+    }
 }
