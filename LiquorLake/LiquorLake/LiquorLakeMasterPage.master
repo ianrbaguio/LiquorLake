@@ -7,8 +7,9 @@
     <title>Liquor Lake</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-    <link rel="stylesheet" href="/App_Themes/Master/Master.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/App_Themes/Master/Master.css" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
@@ -19,18 +20,16 @@
             </div>
             <div style="float: right; padding: 25px;">
                 <asp:HyperLink ID="AboutUsHyperLink" NavigateUrl="~/Default.aspx" runat="server">About Us</asp:HyperLink>
-                <asp:HyperLink ID="FlyerHyperLink" runat="server">Flyer</asp:HyperLink>
+                <!-- NOTE: I commented out the flyer link as the feature isn't entirely confirmed yet. -->
+                <!--<asp:HyperLink ID="FlyerHyperLink" runat="server">Flyer</asp:HyperLink>-->
                 <asp:HyperLink ID="CatalogHyperLink" NavigateUrl="~/ViewCatalog.aspx" runat="server">Catalog</asp:HyperLink>
                 <asp:HyperLink ID="ContactUsHyperLink" runat="server">Contact Us</asp:HyperLink>
             </div>
         </div>
         <div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
         </div>
-        <div id="LiquorLakeFooter">
-
-        </div>
+        <div id="LiquorLakeFooter"></div>
     </form>
     <asp:ContentPlaceHolder ID="jQueryPlaceHolder" runat="server">
     </asp:ContentPlaceHolder>
