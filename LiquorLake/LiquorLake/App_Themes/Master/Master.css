@@ -58,9 +58,57 @@ ul{
 }
 
 .category_link{
-    color: darkblue;
+    /*color: darkblue;*/
+    color: yellow;
 }
 
 .category_link:hover{
-    color:red;
+    /*color:red;*/
+    color:white;
+}
+
+/************************************
+*
+*       CUBE CSS
+*  reference: https://stackoverflow.com/questions/36331335/how-to-create-cube-with-only-html-and-css
+*
+*************************************/
+.square_div{
+  position: relative;
+  width: 206px;
+  height: 190px;
+  margin: 0px 20px;
+  margin-top:100px;
+  display:inline-block;
+}
+.square_left{
+  width:100px;
+  height:100px;
+  background:#c52329;
+  border:solid 2px #FFF;
+  transform: skew(180deg,210deg);
+  position: absolute;
+  top: 43px;
+}
+.square_right{
+  width:100px;
+  height:100px;
+  background:#c52329;
+  border:solid 2px #FFF;
+  transform: skew(180deg,150deg);
+  position: absolute;
+  left:102px;
+  top: 43px;
+}
+.square_top{
+  width:114px;
+  height:100px;
+  background:#c52329;
+  border:solid 2px #FFF;
+ 
+
+transform: rotate(150deg) translate(-40px, -16px) skew(30deg, 0deg);
+  position: absolute;
+  left: 0px;
+  top: -32px;
 }
