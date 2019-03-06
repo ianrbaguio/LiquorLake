@@ -21,7 +21,7 @@ public partial class _Default : System.Web.UI.Page
             //categoryDiv += "<b>" + c.Name + "<b>";
             //categoryDiv += "</a>";
             //categoryDiv += "</div>";
-
+            
             string categoryDiv = "<div class='square_div'>";
             categoryDiv += "<div class='square_left'>";
             categoryDiv += "<a class='category_link' href='/ViewCatalog.aspx?category=" + c.CategoryID + "'>";

@@ -109,9 +109,6 @@ AS
 	FROM Categories
 GO
 
-EXEC GetProducts 2
-
-DROP PROCEDURE SearchProducts
 CREATE PROCEDURE SearchProducts(@Keyword varchar(100) = NULL)
 AS
 
@@ -134,8 +131,3 @@ ELSE
 	INNER JOIN Categories ON Product.CategoryID = Categories.CategoryID
 	WHERE Product.Name LIKE '%'+ @Keyword +'%' OR Product.Description LIKE '%' + @Keyword + '%'
 GO
-
-EXEC SearchProducts 'Whisky'
-
-select * from Product
-select * from Categories

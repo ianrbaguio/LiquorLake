@@ -11,7 +11,7 @@ using System.Configuration;
 /// </summary>
 public class Products
 {
-    public List<Product> GetProducts(int categoryid)
+    public List<Product> GetProducts(int categoryid = 0)
     {
         SqlConnection liquorLakeConn = new SqlConnection { ConnectionString = ConfigurationManager.ConnectionStrings["LiquorLakeConnection"].ConnectionString };
 
@@ -93,7 +93,7 @@ public class Products
 
         SqlParameter productKeywordParam = new SqlParameter()
         {
-            ParameterName = "@CategoryID",
+            ParameterName = "@Keyword",
             SqlValue = keyword,
             SqlDbType = SqlDbType.VarChar,
             Direction = ParameterDirection.Input

@@ -13,7 +13,10 @@
             <div style="float: right; padding: 25px;">
                 <div style="border: 1px solid black;">
                     <asp:TextBox ID="SearchTB" Width="250" Height="20" BorderStyle="None" runat="server"></asp:TextBox>
-                    <span class="fa fa-search"></span>
+                    <button style="border:none; background-color:white;" id="SearchButton" runat="server" onserverclick="SearchButton_ServerClick">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    
                 </div>
             </div>
         </div>

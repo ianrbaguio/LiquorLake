@@ -8,7 +8,7 @@ using System.Web;
 /// </summary>
 public class LLMS
 {
-    public List<Product> FindProducts(int categoryid)
+    public List<Product> FindProducts(int categoryid = 0)
     {
         Products productManager = new Products();
 
