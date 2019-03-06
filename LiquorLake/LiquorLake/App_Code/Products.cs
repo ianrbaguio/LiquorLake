@@ -40,19 +40,32 @@ public class Products
 
         while (productsReader.Read())
         {
-            Product currentProduct = new Product()
-            {
-                UPC = productsReader["UPC"].ToString(),
-                CategoryID = (int)productsReader["CategoryID"],
-                Company = productsReader["Company"].ToString(),
-                Price = (decimal)productsReader["Price"],
-                CountryOfOrigin = productsReader["CountryOfOrigin"].ToString(),
-                Description = productsReader["Description"].ToString(),
-                ImageUrl = "~/App_Themes/Catalog/Images/liquor_placeholder.png",
-                Name = productsReader["Name"].ToString(),
-                Size = (int)productsReader["Size"],
-                WineSweetnessIndex = productsReader["WineSweetnessIndex"].ToString()
-            };
+            //Product currentProduct = new Product()
+            //{
+            //    UPC = productsReader["UPC"].ToString(),
+            //    CategoryID = int.Parse(productsReader["CategoryID"].ToString()),
+            //    Company = productsReader["Company"].ToString(),
+            //    Price = (decimal)productsReader["Price"],
+            //    CountryOfOrigin = productsReader["CountryOfOrigin"].ToString(),
+            //    Description = productsReader["Description"].ToString(),
+            //    ImageUrl = "~/App_Themes/Catalog/Images/liquor_placeholder.png",
+            //    Name = productsReader["Name"].ToString(),
+            //    Size = int.Parse(productsReader["Size"].ToString()),
+            //    WineSweetnessIndex = productsReader["WineSweetnessIndex"].ToString()
+            //};
+
+            Product currentProduct = new Product();
+
+            currentProduct.UPC = productsReader["UPC"].ToString();
+            currentProduct.CategoryID = int.Parse(productsReader["CategoryID"].ToString());
+            currentProduct.Company = productsReader["Company"].ToString();
+            currentProduct.Price = (decimal)productsReader["Price"];
+            currentProduct.CountryOfOrigin = productsReader["CountryOfOrigin"].ToString();
+            currentProduct.Description = productsReader["Description"].ToString();
+            currentProduct.ImageUrl = "~/App_Themes/Catalog/Images/liquor_placeholder.png";
+            currentProduct.Name = productsReader["Name"].ToString();
+            currentProduct.Size = int.Parse(productsReader["Size"].ToString());
+            currentProduct.WineSweetnessIndex = productsReader["WineSweetnessIndex"].ToString();
 
             products.Add(currentProduct);
         }
@@ -63,5 +76,57 @@ public class Products
 
         return products;
 
+    }
+    
+    public List<Product> SearchProduct(string keyword)
+    {
+        SqlConnection liquorLakeConn = new SqlConnection { ConnectionString = ConfigurationManager.ConnectionStrings["LiquorLakeConnection"].ConnectionString };
+
+        liquorLakeConn.Open();
+
+        SqlCommand searchProductsCmd = new SqlCommand()
+        {
+            CommandText = "SearchProducts",
+            CommandType = CommandType.StoredProcedure,
+            Connection = liquorLakeConn
+        };
+
+        SqlParameter productKeywordParam = new SqlParameter()
+        {
+            ParameterName = "@CategoryID",
+            SqlValue = keyword,
+            SqlDbType = SqlDbType.VarChar,
+            Direction = ParameterDirection.Input
+        };
+
+        searchProductsCmd.Parameters.Add(productKeywordParam);
+
+        SqlDataReader productsReader = searchProductsCmd.ExecuteReader();
+
+        List<Product> products = new List<Product>();
+
+        while (productsReader.Read())
+        {
+            Product currentProduct = new Product();
+
+            currentProduct.UPC = productsReader["UPC"].ToString();
+            currentProduct.CategoryID = int.Parse(productsReader["CategoryID"].ToString());
+            currentProduct.Company = productsReader["Company"].ToString();
+            currentProduct.Price = (decimal)productsReader["Price"];
+            currentProduct.CountryOfOrigin = productsReader["CountryOfOrigin"].ToString();
+            currentProduct.Description = productsReader["Description"].ToString();
+            currentProduct.ImageUrl = "~/App_Themes/Catalog/Images/liquor_placeholder.png";
+            currentProduct.Name = productsReader["Name"].ToString();
+            currentProduct.Size = int.Parse(productsReader["Size"].ToString());
+            currentProduct.WineSweetnessIndex = productsReader["WineSweetnessIndex"].ToString();
+
+            products.Add(currentProduct);
+        }
+
+        productsReader.Close();
+
+        liquorLakeConn.Close();
+
+        return products;
     }
 }
