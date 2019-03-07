@@ -8,7 +8,7 @@
         <span class="fas fa-angle-down fa-10x liquor_lake_caret_down"></span>
     </div>
     <div id="SearchByCategoriesDiv">
-        <h2>SEARCH BY CATEGOREIS</h2>
+        <h2>SEARCH BY CATEGORIES</h2>
         <div id="CategoriesContainer" style="text-align: center;" runat="server">
         </div>
     </div>
