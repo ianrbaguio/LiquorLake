@@ -10,24 +10,35 @@ public partial class ViewCatalog : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         int iCategoryID = 0;
-
-        if(Request.QueryString["category"] != null)
-        {
-            iCategoryID = int.Parse(Request.QueryString["category"]);
-        }
-
+        string keyword = "";
         LLMS LiquorLakeManager = new LLMS();
-
         List<Product> products = new List<Product>();
 
-        if(Request.QueryString["keyword"] == null)
+        if (Request.QueryString["keyword"] != null)
         {
+            keyword = Request.QueryString["keyword"].ToString();
+            products = LiquorLakeManager.SearchProduct(keyword);
+        }
+        else if(Request.QueryString["category"] != null)
+        {
+            iCategoryID = int.Parse(Request.QueryString["category"]);
             products = LiquorLakeManager.FindProducts(iCategoryID);
         }
-
-        foreach(Product p in products)
+        else
         {
-            string html = "<div id='" + p.UPC + "' style='display:inline-block; min-width:200px; min-height:200px; border: 1px solid black; text-align:center; padding:10px 0; margin: 10px 25px;'>";
+            products = LiquorLakeManager.FindProducts();
+        }
+
+        GenerateProducts(products);
+        
+    }
+
+    private void GenerateProducts(List<Product> products)
+    {
+        ProductsDiv.InnerHtml = "";
+        foreach (Product p in products)
+        {
+            string html = "<div id='" + p.UPC + "' style='display:inline-block; min-width:200px; max-width:200px; min-height:200px; max-height:200px; border: 1px solid black; text-align:center; padding:10px 0; margin: 10px 25px;'>";
             html += "<img src='/App_Themes/Catalog/Images/liquor_placeholder.png' style='width:100px; height:100px;'/> <br/>";
             html += "<b>" + p.Name + "</b> <br/>";
             html += "<b>" + p.Price.ToString("C2") + "</b> <br/>";
@@ -35,6 +46,16 @@ public partial class ViewCatalog : System.Web.UI.Page
             html += "</div>";
 
             ProductsDiv.InnerHtml += html;
+        }
+    }
+
+    protected void SearchButton_ServerClick(object sender, EventArgs e)
+    {
+        string keyword = SearchTB.Text;
+        string urlPath = "~/ViewCatalog.aspx?keyword=" + keyword;
+        if(keyword != "")
+        {
+            Response.Redirect(urlPath);
         }
     }
 }
