@@ -12,6 +12,8 @@ public class Product
 
     public int CategoryID { get; set; }
 
+    public string CategoryName { get; set; }
+
     public string Name { get; set; }
 
     public int Size { get; set; }

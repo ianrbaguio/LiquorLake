@@ -38,9 +38,10 @@ public partial class ViewCatalog : System.Web.UI.Page
         ProductsDiv.InnerHtml = "";
         foreach (Product p in products)
         {
+
             string html = "<div id='" + p.UPC + "' style='display:inline-block; min-width:200px; max-width:200px; min-height:200px; max-height:200px; border: 1px solid black; text-align:center; padding:10px 0; margin: 10px 25px;'>";
-            html += "<img src='/App_Themes/Catalog/Images/liquor_placeholder.png' style='width:100px; height:100px;'/> <br/>";
-            html += "<b>" + p.Name + "</b> <br/>";
+            html += "<img src='/Images/" + p.CategoryName + "/" + p.ImageUrl + "' style='height:225px;'/> <br/>";
+            html += "<div style='width:100%; max-height: 25px;'><b>" + p.Name + "</b></div> <br/>";
             html += "<b>" + p.Price.ToString("C2") + "</b> <br/>";
             html += "<a class='product_info'>More info</a>";
             html += "</div>";

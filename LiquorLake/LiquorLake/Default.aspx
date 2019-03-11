@@ -34,7 +34,7 @@
 
         </div>
         <div id="AboutUsImageSection" style="width: 50%; float: right; flex: 1;">
-            <img src="App_Themes/Master/Images/LiquorLake.png" style="width: 80%;" />
+            <img src="App_Themes/Master/Images/LiquorLake.jpg" style="width: 80%;" />
         </div>
     </div>
 

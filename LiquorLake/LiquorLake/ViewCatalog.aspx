@@ -22,7 +22,7 @@
         </div>
 
         <div id="ViewCatalogContent" style="clear: both; padding: 20px 0;">
-            <div id="ViewCatalogFilterContainer" style="float: left; width: 180px; text-align: center; background-color: black; border-radius: 5px;">
+            <%--<div id="ViewCatalogFilterContainer" style="float: left; width: 180px; text-align: center; background-color: black; border-radius: 5px;">
                 <div style="color:yellow; font-size:25px; padding:5px;">FILTER</div>
                 <div id="CategoriesFilter" style="margin:5px; color:black; background-color: white;  ">
                     <h3>CATEGORIES</h3>
@@ -38,8 +38,8 @@
                         <asp:ListItem Value="All">All</asp:ListItem>
                     </asp:DropDownList>
                 </div>
-            </div>
-            <div id="ProductsDiv" style="float:left; max-width:80%; padding: 0 25px;" runat="server">
+            </div>--%>
+            <div id="ProductsDiv" style="float:left; max-width:100%; padding: 0 25px;" runat="server">
 
             </div>
         </div>

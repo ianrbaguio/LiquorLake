@@ -16,7 +16,7 @@ public partial class _Default : System.Web.UI.Page
         foreach(Category c in CategoryList)
         {
             string categoryDiv = "<div style='min-width:180px; min-height:150px; display:inline-block; border: 1px solid gray; padding:25px; margin:10px;'>";
-            categoryDiv += "<a class='category_link' href='/ViewCatalog.aspx?category=" + c.CategoryID + "'>";
+            categoryDiv += "<a href='/ViewCatalog.aspx?category=" + c.CategoryID + "'>";
             categoryDiv += "<img src='/App_Themes/Catalog/Images/liquor_placeholder.png' style='width:100px; height:100px;'/><br/>";
             categoryDiv += "<b>" + c.Name + "<b>";
             categoryDiv += "</a>";

@@ -9,15 +9,17 @@
     </asp:ContentPlaceHolder>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
     <link rel="stylesheet" href="/App_Themes/Master/Master.css" />
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <%--<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">--%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
     <form id="LiquorLakeForm" runat="server">
         <div id="LiquorLakeHeader" class="liquor_lake_header">
-            <div style="float: left; padding: 20px; font-size: 25px; font-weight: bold;">
+            <asp:HyperLink ID="LiquorLakeHyperLink" NavigateUrl="~/Default.aspx" runat="server">
+                <div style="float: left; padding: 20px; font-size: 25px; font-weight: bold;">
                 LIQUOR LAKE
-            </div>
+                </div>
+            </asp:HyperLink>
             <div style="float: right; padding: 25px;">
                 <asp:HyperLink ID="AboutUsHyperLink" NavigateUrl="~/Default.aspx" runat="server">About Us</asp:HyperLink>
                 <!-- NOTE: I commented out the flyer link as the feature isn't entirely confirmed yet. -->

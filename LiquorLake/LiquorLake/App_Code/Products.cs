@@ -58,11 +58,12 @@ public class Products
 
             currentProduct.UPC = productsReader["UPC"].ToString();
             currentProduct.CategoryID = int.Parse(productsReader["CategoryID"].ToString());
+            currentProduct.CategoryName = productsReader["CategoryName"].ToString();
             currentProduct.Company = productsReader["Company"].ToString();
             currentProduct.Price = (decimal)productsReader["Price"];
             currentProduct.CountryOfOrigin = productsReader["CountryOfOrigin"].ToString();
             currentProduct.Description = productsReader["Description"].ToString();
-            currentProduct.ImageUrl = "~/App_Themes/Catalog/Images/liquor_placeholder.png";
+            currentProduct.ImageUrl = productsReader["Image"].ToString();
             currentProduct.Name = productsReader["Name"].ToString();
             currentProduct.Size = int.Parse(productsReader["Size"].ToString());
             currentProduct.WineSweetnessIndex = productsReader["WineSweetnessIndex"].ToString();

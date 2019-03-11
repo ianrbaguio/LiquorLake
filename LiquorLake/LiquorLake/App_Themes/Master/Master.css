@@ -13,7 +13,7 @@ html,body {
 a{
     padding: 0 10px;
     text-decoration:none;
-    color:yellow;   
+    color:black;   
 }
 
 a:hover{
@@ -26,10 +26,10 @@ ul{
 }
 
 .liquor_lake_header{
-    color: yellow;
+    color: black;
     width: 100%; 
     height: 75px; 
-    background-color: black;
+    background-color: #FFF372;
 }
 
 /***********************************
@@ -40,7 +40,7 @@ ul{
 
 .liquor_lake_default_image{
     width:100%; 
-    background-image:url('/App_Themes/Master/Images/LiquorLake.png'); 
+    background-image:url('/App_Themes/Master/Images/LiquorLake.jpg'); 
     background-size:100%;
     background-repeat:no-repeat;
     flex-grow:1;
@@ -61,16 +61,6 @@ ul{
 
 .liquor_lake_caret_down:hover{
     cursor:pointer;
-}
-
-.category_link{
-    /*color: darkblue;*/
-    color: yellow;
-}
-
-.category_link:hover{
-    /*color:red;*/
-    color:white;
 }
 
 /************************************
