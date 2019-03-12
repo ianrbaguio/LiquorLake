@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
-    <div id="ViewCatalogFullContainer" style="margin:0 10px;">
+    <div id="ViewCatalogFullContainer" style="margin: 0 10px;">
         <div id="ViewCatalogHeader">
             <div style="float: left;">
                 <h2>Catalog</h2>
@@ -13,10 +13,10 @@
             <div style="float: right; padding: 25px;">
                 <div style="border: 1px solid black;">
                     <asp:TextBox ID="SearchTB" Width="250" Height="20" BorderStyle="None" runat="server"></asp:TextBox>
-                    <button style="border:none; background-color:white;" id="SearchButton" runat="server" onserverclick="SearchButton_ServerClick">
+                    <button style="border: none; background-color: white;" id="SearchButton" runat="server" onserverclick="SearchButton_ServerClick">
                         <span class="fa fa-search"></span>
                     </button>
-                    
+
                 </div>
             </div>
         </div>
@@ -39,16 +39,45 @@
                     </asp:DropDownList>
                 </div>
             </div>--%>
-            <div id="ProductsDiv" style="float:left; max-width:100%; padding: 0 25px;" runat="server">
-
+            <div id="ProductsDiv" style="float: left; max-width: 100%; padding: 0 75px;" runat="server">
             </div>
         </div>
 
-        <div id="FreeLiquorIconReference" style="clear:both;">
+        <div id="FreeLiquorIconReference" style="clear: both;">
             <div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
         </div>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="jQueryPlaceHolder" runat="Server">
+    <script type="text/javascript">
+
+        $(".more_info_button").click(function () {
+            var productUPC = $(this).prop('id').replace("buttonMI_", "");
+            var buttonID = $(this).prop('id');
+            
+            var productmodal = document.getElementById(productUPC + "Modal");
+            // Get the button that opens the modal
+            var btn = document.getElementsByClassName("more_info_button");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            productmodal.style.display = "block";
+
+            //$(window).click(function (event) {
+            //    if (!$(event.target).parents(".modal").length && $(".modal").is(":visible")) {
+            //        console.log("w clicked");
+            //        $(".modal").css("display", "none");
+            //    }
+            //});
+
+        });
+
+        $(".close").click(function () {
+            var upc = $(this).prop('id').replace("_close_button", "");
+            $("#" + upc + "Modal").css("display", "none");
+        });
+
+    </script>
 </asp:Content>
 

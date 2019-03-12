@@ -112,11 +112,12 @@ public class Products
 
             currentProduct.UPC = productsReader["UPC"].ToString();
             currentProduct.CategoryID = int.Parse(productsReader["CategoryID"].ToString());
+            currentProduct.CategoryName = productsReader["CategoryName"].ToString();
             currentProduct.Company = productsReader["Company"].ToString();
             currentProduct.Price = (decimal)productsReader["Price"];
             currentProduct.CountryOfOrigin = productsReader["CountryOfOrigin"].ToString();
             currentProduct.Description = productsReader["Description"].ToString();
-            currentProduct.ImageUrl = "~/App_Themes/Catalog/Images/liquor_placeholder.png";
+            currentProduct.ImageUrl = productsReader["Image"].ToString(); ;
             currentProduct.Name = productsReader["Name"].ToString();
             currentProduct.Size = int.Parse(productsReader["Size"].ToString());
             currentProduct.WineSweetnessIndex = productsReader["WineSweetnessIndex"].ToString();
@@ -129,5 +130,50 @@ public class Products
         liquorLakeConn.Close();
 
         return products;
+    }
+
+    public Product GetProductDetails(string upc)
+    {
+        SqlConnection liquorLakeConn = new SqlConnection { ConnectionString = ConfigurationManager.ConnectionStrings["LiquorLakeConnection"].ConnectionString };
+
+        liquorLakeConn.Open();
+
+        SqlCommand GetProductDetailsCMD = new SqlCommand()
+        {
+            CommandText = "ProductDetails",
+            CommandType = CommandType.StoredProcedure,
+            Connection = liquorLakeConn
+        };
+
+        SqlParameter UPCParameter = new SqlParameter()
+        {
+            ParameterName = "@UPC",
+            SqlDbType = SqlDbType.VarChar,
+            SqlValue = upc,
+            Direction = ParameterDirection.Input
+        };
+
+        GetProductDetailsCMD.Parameters.Add(UPCParameter);
+
+        SqlDataReader GetProductDetailsReader = GetProductDetailsCMD.ExecuteReader();
+
+        Product returnProduct = new Product();
+        if (GetProductDetailsReader.HasRows)
+        {
+            GetProductDetailsReader.Read();
+
+            returnProduct.UPC = GetProductDetailsReader["UPC"].ToString();
+            returnProduct.CategoryID = int.Parse(GetProductDetailsReader["CategoryID"].ToString());
+            returnProduct.Company = GetProductDetailsReader["Company"].ToString();
+            returnProduct.Price = (decimal)GetProductDetailsReader["Price"];
+            returnProduct.CountryOfOrigin = GetProductDetailsReader["CountryOfOrigin"].ToString();
+            returnProduct.Description = GetProductDetailsReader["Description"].ToString();
+            returnProduct.ImageUrl = GetProductDetailsReader["Image"].ToString();
+            returnProduct.Name = GetProductDetailsReader["Name"].ToString();
+            returnProduct.Size = int.Parse(GetProductDetailsReader["Size"].ToString());
+            returnProduct.WineSweetnessIndex = GetProductDetailsReader["WineSweetnessIndex"].ToString();
+        }
+
+        return returnProduct;
     }
 }

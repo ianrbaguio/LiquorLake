@@ -28,4 +28,13 @@ public class LLMS
 
         return productManager.SearchProduct(keyword);
     }
+
+    public Product GetProductDetails(string upc)
+    {
+        Products ProductManager = new Products();
+
+        Product returnProduct = ProductManager.GetProductDetails(upc);
+
+        return returnProduct;
+    }
 }
