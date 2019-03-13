@@ -39,37 +39,38 @@ public partial class ViewCatalog : System.Web.UI.Page
         ProductsDiv.InnerHtml = "";
         foreach (Product p in products)
         {
-            string html = "<div id='" + p.UPC + "' style='display:inline-block; min-width:300px; max-width:300px; min-height:300px; max-height:300px; text-align:center; padding:25px 10px; margin: 10px 25px;'>";
-            html += "<img src='/Images/" + p.CategoryName + "/" + p.ImageUrl + "' style='height:225px; max-width:150px;'/> <br/>";
-            html += "<div style='width:100%; max-height: 25px;'><b>" + p.Name + "</b></div> <br/>";
-            html += "<b>" + p.Price.ToString("C2") + "</b> <br/>";
+            // Product Item
+            string html = "<div id='" + p.UPC + "' class='product_item_container'>";
+            html += "<div class='product_image_container'><img src='/Images/" + p.CategoryName + "/" + p.ImageUrl + "' alt='" + p.Name + "'/></div>";
+            html += "<div class='product_item_name'><b>" + p.Name + "</b></div>";
+            html += "<p class='product_item_price'><b>" + p.Price.ToString("C2") + "</b></p>";
             html += "<input id='buttonMI_" + p.UPC + "' class='more_info_button' type='button' value='More info'/>";
             html += "</div>";
+
             //Modal Dialog
             html += "<div id='" + p.UPC + "Modal' class='modal'>";
-            html += "<div class='modal-content'>";
-
+            html += "<div class='modal-content' style='width: 80%;'>";
             html += "<div class='modal-header'>";
-            html += "<button id='" + p.UPC + "_close_button' type='button' class='close'>&times;</button>";
             html += "<h2>" + p.Name + "</h2>";
+            html += "<button id='" + p.UPC + "_close_button' type='button' class='close'><i class='fas fa-times'></i></button>";
             html += "</div>"; //modal-header closing div
 
             html += "<div class='modal-body'>";
 
-            html += "<div style='float:left; width:45%; text-align:center;'>";
-            html += "<img src='/Images/" + p.CategoryName + "/" + p.ImageUrl + "' style='height:225px; max-width:150px;'/> <br/>";
+            html += "<div class='modal_content_left'>";
+            html += "<img src='/Images/" + p.CategoryName + "/" + p.ImageUrl + "'/>";
             html += "</div>"; //left details div
 
-            html += "<div style='float:right; width: 45%; text-align:left;'>";
-            html += "UPC: " + p.UPC + "<br/>";
-            html += "Category: " + p.CategoryName + "<br/>";
-            html += "Price: " + p.Price.ToString("C2") + "<br/>";
-            html += "Name: " + p.Name + "<br/>";
-            html += "Size: " + p.Size + "<br/>";
-            html += "Country of Origin: " + p.CountryOfOrigin + "<br/>";
-            html += "Wine Sweetness Index: " + p.WineSweetnessIndex + "<br/>";
-            html += "Company: " + p.Company + "<br/>";
-            html += "Description: " + p.Description + "<br/>";
+            html += "<div class='modal_content_right'>";
+            html += "<p><b>UPC: </b>" + p.UPC + "</p>";
+            html += "<p><b>Category: </b>" + p.CategoryName + "</p>";
+            html += "<p><b>Price: </b>" + p.Price.ToString("C2") + "</p>";
+            html += "<p><b>Name: </b>" + p.Name + "</p>";
+            html += "<p><b>Size: </b>" + p.Size + "</p>";
+            html += "<p><b>Country of Origin: </b>" + p.CountryOfOrigin + "</p>";
+            html += "<p><b>Wine Sweetness Index: </b>" + p.WineSweetnessIndex + "</p>";
+            html += "<p><b>Company: </b>" + p.Company + "</p>";
+            html += "<p><b>Description: </b>" + p.Description + "</p>";
             html += "</div>";
 
             html += "</div>";//modal body closing div

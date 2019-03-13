@@ -9,31 +9,49 @@
     </asp:ContentPlaceHolder>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
     <link rel="stylesheet" href="/App_Themes/Master/Master.css" />
-    <%--<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">--%>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="Scripts/main.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
     <form id="LiquorLakeForm" runat="server">
         <div id="LiquorLakeHeader" class="liquor_lake_header">
-            <asp:HyperLink ID="LiquorLakeHyperLink" NavigateUrl="~/Default.aspx" runat="server">
-                <div style="float: left; padding: 20px; font-size: 25px; font-weight: bold;">
-                LIQUOR LAKE
-                </div>
-            </asp:HyperLink>
-            <div style="float: right; padding: 25px;">
+            <div class="liqour_lake_logo">
+                <asp:HyperLink ID="LiquorLakeHyperLink" NavigateUrl="~/Default.aspx" runat="server">
+                    <img src="App_Themes/Master/Images/liqourlakelogo.png" alt="Liqour Lake Logo"/>
+                </asp:HyperLink>
+            </div>
+            <div class="liqour_lake_navigation">
                 <asp:HyperLink ID="AboutUsHyperLink" NavigateUrl="~/Default.aspx" runat="server">About Us</asp:HyperLink>
-                <!-- NOTE: I commented out the flyer link as the feature isn't entirely confirmed yet. -->
-                <!--<asp:HyperLink ID="FlyerHyperLink" runat="server">Flyer</asp:HyperLink>-->
                 <asp:HyperLink ID="CatalogHyperLink" NavigateUrl="~/ViewCatalog.aspx" runat="server">Catalog</asp:HyperLink>
-                <asp:HyperLink ID="ContactUsHyperLink" runat="server">Contact Us</asp:HyperLink>
+                <asp:HyperLink ID="ContactUsHyperLink" NavigateUrl="#" runat="server">Contact Us</asp:HyperLink>
             </div>
         </div>
-        <div>
+        <div class="liquor_lake_content">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
         </div>
-        <div id="LiquorLakeFooter"></div>
+        <div id="LiquorLakeFooter" class="liquor_lake_footer">
+            <div class="footer_logo_image">
+                <img src="App_Themes/Master/Images/liqourlakelogo.png" alt="Liqour Lake Logo"/>
+            </div>
+            <div id="FooterCopyrightText" class="footer_copyright_text">
+                <p>&copy;2019 &#183; Website created by <a href="https://github.com/ajsingh18" target="_blank">Ajay Singh</a> &amp; <a href="http://ianrbaguio.com/" target="_blank">Ian Baguio</a></p>
+                <p>All images and content used for educational purposes.</p>
+                <p>Website designed by <a href="http://www.timdesigns.ca/" target="_blank">Tim Designs</a></p>
+            </div>
+            <div class="footer_social_media">
+                <a href="#">
+                    <i class="fab fa-facebook-square"></i>
+                </a>
+                <a href="#">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#">
+                    <i class="fab fa-twitter-square"></i>
+                </a>
+            </div>
+        </div>
     </form>
-    <asp:ContentPlaceHolder ID="jQueryPlaceHolder" runat="server">
-    </asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder ID="jQueryPlaceHolder" runat="server"></asp:ContentPlaceHolder>
 </body>
 </html>

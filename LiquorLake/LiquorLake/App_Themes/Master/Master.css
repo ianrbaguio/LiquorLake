@@ -4,64 +4,303 @@
 
 ********************************************************************************/
 
-html,body {
-    margin:0;
+/*-------------------- Site Wide --------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*-------------------- End of Site Wide --------------------*/
+
+/*-------------------- Header/Naviagtion --------------------*/
+.liquor_lake_header {
+    overflow: auto;
+    padding: 20px 30px;
+    background-color: #212121;
+}
+
+.liqour_lake_logo {
+    float: left;
+}
+
+.liqour_lake_logo a {
+    display: block;
+}
+
+.liqour_lake_navigation {
+    float: right;
+    padding-top: 10px;
+}
+
+.liqour_lake_navigation a, .liqour_lake_navigation a:link, .liqour_lake_navigation a:active {
+    color: #f1c40f;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.liqour_lake_navigation a:hover {
+    color: #f1c40f;
+    border-bottom: 3px solid #e74c3c;
+}
+/*-------------------- End of Header/Naviagtion --------------------*/
+
+/*-------------------- Landing Page --------------------*/
+header {
+    display: block;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/App_Themes/Master/Images/frontpageimage.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+header p {
+    position: absolute;
+    font-weight: bold;
+    font-size: 50px;
+    color: #ecf0f1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.down_arrow_link {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, -50%);
+}
+
+.down_arrow_link a, .down_arrow_link a:link, .down_arrow_link a:active {
+    color: #f1c40f;
+    font-size: 60px;
+}
+
+.down_arrow_link a:hover {
+    color: #e74c3c;    
+}
+/*-------------------- End of Landing Page --------------------*/
+
+/*-------------------- About Us --------------------*/
+.about_us_container {
+    padding: 30px;
+    overflow: auto;
+}
+
+.about_us_text {
+    float: left;
+    width: 60%;
+}
+
+.store_hours_list li {
+    list-style-type: none;
+}
+
+.about_us_image {
+    float: left;
+    width: 40%;
+}
+
+.about_us_image img {
+    display: block;
+    height: 350px;
+    margin: 0 auto;
+}
+
+.categories_container {
+    float: left;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.categories_container h2 {
+    text-align: center;
+}
+
+.category_item_container {
+    width: 33.3%;
+    float: left;
+    padding: 10px;
+}
+.category_item_container img {
+    width: 100%;
+}
+
+.category_image_container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    color: #f1c40f;
+}
+
+.category_image_container:hover {
+    color: #e74c3c;
+}
+
+.shade_overlay {
+    background: rgba(0,0,0,0.7);
+    width: 100%;
     height: 100%;
-    min-height:100%;
+    top: 0;
+    position: absolute;
 }
 
-a{
-    padding: 0 10px;
-    text-decoration:none;
-    color:black;   
+.category_item_name {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    font-weight: bold;
+}
+/*-------------------- End of About Us --------------------*/
+
+/*-------------------- Catalog --------------------*/
+.catalog_container {
+    position: relative;
+    padding: 30px;
 }
 
-a:hover{
-    color: red;
+.search_bar_container {
+    position: absolute;
+    top: 40px;
+    right: 30px;
+    width: 500px;
 }
 
-ul{
-    list-style-type:none;
-    padding:0;
+.search_textbox {
+    float: left;
+    width: 85%;
 }
 
-.liquor_lake_header{
-    color: black;
-    width: 100%; 
-    height: 75px; 
-    background-color: #FFF372;
+.search_textbox input {
+    border: 2px solid #bdc3c7;
+    border-right: 0;
+    padding: 10px;
+    width: 100%;
 }
 
-/***********************************
-    
-    DEFAULT PAGE STYLES
-
-***********************************/
-
-.liquor_lake_default_image{
-    width:100%; 
-    background-image:url('/App_Themes/Master/Images/LiquorLake.jpg'); 
-    background-size:100%;
-    background-repeat:no-repeat;
-    flex-grow:1;
-    opacity: 0.5;
-    box-shadow: 25px 25px 25px black inset;
-    position:relative;
+.search_button {
+    float: left;
+    width: 15%;
 }
 
-.liquor_lake_caret_down{
-    bottom:0;
-    text-align:center;
-    width:100%;
-    position:absolute;
-    font-size:80px;
-    font-weight:bold;
-    color:yellow;
+.search_button button{
+    padding: 10px;
+    border: 0;
+    font-size: 19px;
+    width: 100%;
 }
 
-.liquor_lake_caret_down:hover{
-    cursor:pointer;
+#ViewCatalogContent {
+    margin-top: 30px;
 }
+
+.product_item_container {
+    float: left;
+    width: 20%;
+    height: 350px;
+    padding: 10px;
+}
+
+.product_image_container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.product_item_container img {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.product_item_name {
+    font-size: 18px;
+    text-align: center;
+}
+
+.product_item_price {
+    text-align: center;
+
+}
+
+.product_item_container input {
+    display: block;
+    margin: 0 auto;
+    border: 0;
+    padding: 10px;
+    width: 60%;
+    font-weight: bold;
+}
+/*-------------------- End ofCatalog --------------------*/
+
+/*-------------------- Contact Us --------------------*/
+/*-------------------- End of Contact Us --------------------*/
+
+/*-------------------- Footer --------------------*/
+.liquor_lake_footer {
+    width: 100%;
+    overflow: auto;
+    background-color: #212121;
+    color: #f1c40f;
+    padding: 20px 30px;
+}
+
+.footer_logo_image {
+    float: left;
+    width: 25%;
+}
+
+.footer_logo_image img {
+    margin-top: 15px;
+}
+
+.footer_copyright_text {
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+#FooterCopyrightText p {
+    margin-bottom: 0;
+}
+
+.footer_social_media {
+    float: left;
+    width: 25%;
+    font-size: 50px;
+    text-align: right;
+}
+
+.footer_social_media a, .footer_social_media a:link, .footer_social_media a:active {
+    color: #f1c40f;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+.footer_social_media a:hover {
+    color: #e74c3c;
+}
+/*-------------------- End of Footer --------------------*/
+
+/*-------------------- Responsive Design Layouts --------------------*/
+@media screen and (max-width: 1024px) {
+}
+
+@media screen and (max-width: 800px) {}
+
+@media screen and (max-width: 768px) {}
+
+@media screen and (max-width: 600px) {}
+
+@media screen and (max-width: 480px) {}
+
+@media screen and (max-width: 320px) {}
 
 /************************************
 *
@@ -69,7 +308,7 @@ ul{
 *  reference: https://stackoverflow.com/questions/36331335/how-to-create-cube-with-only-html-and-css
 *
 *************************************/
-.square_div{
+/*.square_div{
   position: relative;
   width: 206px;
   height: 190px;
@@ -107,4 +346,4 @@ transform: rotate(150deg) translate(-40px, -16px) skew(30deg, 0deg);
   position: absolute;
   left: 0px;
   top: -32px;
-}
+}*/

@@ -4,24 +4,19 @@
     <link rel="stylesheet" href="/App_Themes/Catalog/Catalog.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-
-    <div id="ViewCatalogFullContainer" style="margin: 0 10px;">
-        <div id="ViewCatalogHeader">
-            <div style="float: left;">
-                <h2>Catalog</h2>
+    <div id="ViewCatalogFullContainer" class="catalog_container">
+        <h1>Catalog</h1>
+        <div class="search_bar_container">
+            <div class="search_textbox"> 
+                <asp:TextBox ID="SearchTB" placeholder="Search" runat="server"></asp:TextBox>
             </div>
-            <div style="float: right; padding: 25px;">
-                <div style="border: 1px solid black;">
-                    <asp:TextBox ID="SearchTB" Width="250" Height="20" BorderStyle="None" runat="server"></asp:TextBox>
-                    <button style="border: none; background-color: white;" id="SearchButton" runat="server" onserverclick="SearchButton_ServerClick">
-                        <span class="fa fa-search"></span>
-                    </button>
-
-                </div>
+            <div class="search_button">
+                <button id="SearchButton" runat="server" onserverclick="SearchButton_ServerClick">
+                    <i class="fa fa-search"></i>
+                </button>
             </div>
         </div>
-
-        <div id="ViewCatalogContent" style="clear: both; padding: 20px 0;">
+        <div id="ViewCatalogContent">
             <%--<div id="ViewCatalogFilterContainer" style="float: left; width: 180px; text-align: center; background-color: black; border-radius: 5px;">
                 <div style="color:yellow; font-size:25px; padding:5px;">FILTER</div>
                 <div id="CategoriesFilter" style="margin:5px; color:black; background-color: white;  ">
@@ -39,13 +34,11 @@
                     </asp:DropDownList>
                 </div>
             </div>--%>
-            <div id="ProductsDiv" style="float: left; max-width: 100%; padding: 0 75px;" runat="server">
-            </div>
+            <div id="ProductsDiv" runat="server"></div>
         </div>
-
-        <div id="FreeLiquorIconReference" style="clear: both;">
+        <%--<div id="FreeLiquorIconReference" style="clear: both;">
             <div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
-        </div>
+        </div>--%>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="jQueryPlaceHolder" runat="Server">
