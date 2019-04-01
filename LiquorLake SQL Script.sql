@@ -179,3 +179,113 @@ AS
 
 	RETURN @ReturnCode
 GO
+
+CREATE PROCEDURE AddProduct(@UPC VARCHAR(20) = NULL, @CategoryID INT = NULL, @Name NVARCHAR(50) = NULL, @Price MONEY = NULL, @Size INT = NULL, @CountryOfOrigin NVARCHAR(15) = NULL,
+						    @WineSweetnessIndex NVARCHAR(15) = NULL, @Image NVARCHAR(50) = NULL, @Company NVARCHAR(100) = NULL, @Description NVARCHAR(250) = NULL)
+AS
+
+	DECLARE @ReturnCode INT
+	SET @ReturnCode = 1
+
+IF @UPC IS NULL
+		RAISERROR('AddProduct - Required Parameter: @UPC', 16, 1)
+ELSE
+IF @CategoryID IS NULL
+		RAISERROR('AddProduct - Required Parameter: @CategoryID', 16, 1)
+ELSE
+IF @Name IS NULL
+		RAISERROR('AddProduct - Required Parameter: @Name', 16, 1)
+ELSE
+IF @Price IS NULL
+		RAISERROR('AddProduct - Required Parameter: @Price', 16, 1)
+ELSE
+IF @Size IS NULL
+		RAISERROR('AddProduct - Required Parameter: @Size', 16, 1)
+ELSE
+IF @CountryOfOrigin IS NULL
+		RAISERROR('AddProduct - Required Parameter: @COuntryOfOrigin', 16, 1)
+ELSE
+IF @WineSweetnessIndex IS NULL
+		RAISERROR('AddProduct - Required Parameter: @WineSweetnessIndex', 16, 1)
+ELSE
+IF @Image IS NULL
+		RAISERROR('AddProduct - Required Parameter: @Image', 16, 1)
+ELSE
+IF @Company IS NULL
+		RAISERROR('AddProduct - Required Parameter: @Company', 16, 1)
+ELSE
+IF @Description IS NULL
+		RAISERROR('AddProduct - Required Parameter: @Description', 16, 1)
+ELSE
+	BEGIN
+	INSERT INTO Product
+	(Upc,CategoryID,Name,Price,Size,CountryOfOrigin, WineSweetnessIndex,Image,Company,Description)
+	VALUES
+	(@UPC,@CategoryID,@Name,@Price,@Size,@CountryOfOrigin,@WineSweetnessIndex,@Image,@Company,@Description)
+	END
+
+	IF @@ERROR = 0
+		SET @ReturnCode = 0
+	ELSE
+		RAISERROR('ProductDetails - INSERT Error', 16, 1)
+
+RETURN @ReturnCode
+
+CREATE PROCEDURE UpdateProduct(@UPC VARCHAR(20) = NULL, @CategoryID INT = NULL, @Name NVARCHAR(50) = NULL, @Price MONEY = NULL, @Size INT = NULL, @CountryOfOrigin NVARCHAR(15) = NULL,
+						    @WineSweetnessIndex NVARCHAR(15) = NULL, @Image NVARCHAR(50) = NULL, @Company NVARCHAR(100) = NULL, @Description NVARCHAR(250) = NULL)
+AS
+
+	DECLARE @ReturnCode INT
+	SET @ReturnCode = 1
+
+IF @UPC IS NULL
+		RAISERROR('UpdateProduct - Required Parameter: @UPC', 16, 1)
+ELSE
+IF @CategoryID IS NULL
+		RAISERROR('UpdateProduct - Required Parameter: @CategoryID', 16, 1)
+ELSE
+IF @Name IS NULL
+		RAISERROR('UpdateProduct - Required Parameter: @Name', 16, 1)
+ELSE
+IF @Price IS NULL
+		RAISERROR('UpdateProduct - Required Parameter: @Price', 16, 1)
+ELSE
+IF @Size IS NULL
+		RAISERROR('UpdateProduct - Required Parameter: @Size', 16, 1)
+ELSE
+IF @CountryOfOrigin IS NULL
+		RAISERROR('UpdateProduct - Required Parameter: @COuntryOfOrigin', 16, 1)
+ELSE
+IF @WineSweetnessIndex IS NULL
+		RAISERROR('UpdateProduct - Required Parameter: @WineSweetnessIndex', 16, 1)
+ELSE
+IF @Image IS NULL
+		RAISERROR('UpdateProduct - Required Parameter: @Image', 16, 1)
+ELSE
+IF @Company IS NULL
+		RAISERROR('UpdateProduct - Required Parameter: @Company', 16, 1)
+ELSE
+IF @Description IS NULL
+		RAISERROR('UpdateProduct - Required Parameter: @Description', 16, 1)
+ELSE
+	BEGIN
+	UPDATE Product
+	SET UPC = @UPC,
+		CategoryID = @CategoryID,
+		Name = @Name,
+		Size = @Size,
+		CountryOfOrigin = @CountryOfOrigin,
+		WineSweetnessIndex = @WineSweetnessIndex,
+		Image = @Image,
+		Company = @Company,
+		Description = @Description
+	FROM Product
+	Where UPC = @UPC
+	END
+
+	IF @@ERROR = 0
+		SET @ReturnCode = 0
+	ELSE
+		RAISERROR('ProductDetails - UPDATE Error', 16, 1)
+
+RETURN @ReturnCode
