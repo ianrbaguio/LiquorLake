@@ -227,9 +227,10 @@ ELSE
 	IF @@ERROR = 0
 		SET @ReturnCode = 0
 	ELSE
-		RAISERROR('ProductDetails - INSERT Error', 16, 1)
+		RAISERROR('AddProduct - INSERT Error', 16, 1)
 
 RETURN @ReturnCode
+go
 
 CREATE PROCEDURE UpdateProduct(@UPC VARCHAR(20) = NULL, @CategoryID INT = NULL, @Name NVARCHAR(50) = NULL, @Price MONEY = NULL, @Size INT = NULL, @CountryOfOrigin NVARCHAR(15) = NULL,
 						    @WineSweetnessIndex NVARCHAR(15) = NULL, @Image NVARCHAR(50) = NULL, @Company NVARCHAR(100) = NULL, @Description NVARCHAR(250) = NULL)
@@ -286,6 +287,29 @@ ELSE
 	IF @@ERROR = 0
 		SET @ReturnCode = 0
 	ELSE
-		RAISERROR('ProductDetails - UPDATE Error', 16, 1)
+		RAISERROR('UpdateProduct - UPDATE Error', 16, 1)
 
 RETURN @ReturnCode
+go
+
+CREATE PROCEDURE DeleteProduct(@UPC VARCHAR(20) = NULL)
+AS
+	DECLARE @ReturnCode INT
+	SET @ReturnCode = 1
+
+	IF @UPC IS NULL
+		RAISERROR('DeleteProduct - Required Parameter: @UPC', 16, 1)
+	ELSE
+		BEGIN
+		DELETE FROM Product WHERE UPC = @UPC
+		END
+
+	IF @@ERROR = 0
+		SET @ReturnCode = 0
+	ELSE
+		RAISERROR('DeleteProduct - DELETE Error', 16, 1)
+
+RETURN @ReturnCode
+go
+
+
