@@ -176,4 +176,36 @@ public class Products
 
         return returnProduct;
     }
+
+    public bool DeleteProduct(string upc)
+    {
+        bool success = false;
+
+        SqlConnection liquorLakeConn = new SqlConnection { ConnectionString = ConfigurationManager.ConnectionStrings["LiquorLakeConnection"].ConnectionString };
+
+        liquorLakeConn.Open();
+
+        SqlCommand GetProductDetailsCMD = new SqlCommand()
+        {
+            CommandText = "DeleteProduct",
+            CommandType = CommandType.StoredProcedure,
+            Connection = liquorLakeConn
+        };
+
+        SqlParameter UPCParameter = new SqlParameter()
+        {
+            ParameterName = "@UPC",
+            SqlDbType = SqlDbType.VarChar,
+            SqlValue = upc,
+            Direction = ParameterDirection.Input
+        };
+
+        GetProductDetailsCMD.Parameters.Add(UPCParameter);
+
+        GetProductDetailsCMD.ExecuteNonQuery();
+
+        success = true;
+
+        return success;
+    }
 }
