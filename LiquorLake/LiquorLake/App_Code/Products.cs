@@ -208,4 +208,230 @@ public class Products
 
         return success;
     }
+
+    public bool UpdateProduct(Product p )
+    {
+        bool success = false;
+
+        SqlConnection liquorLakeConn = new SqlConnection { ConnectionString = ConfigurationManager.ConnectionStrings["LiquorLakeConnection"].ConnectionString };
+
+        liquorLakeConn.Open();
+
+        SqlCommand UpdateProductCMD = new SqlCommand()
+        {
+            CommandText = "UpdateProduct",
+            CommandType = CommandType.StoredProcedure,
+            Connection = liquorLakeConn
+        };
+
+        SqlParameter updateParameter = new SqlParameter()
+        {
+            ParameterName = "@UPC",
+            SqlDbType = SqlDbType.VarChar,
+            SqlValue = p.UPC,
+            Direction = ParameterDirection.Input
+        };
+
+        UpdateProductCMD.Parameters.Add(updateParameter);
+
+        updateParameter = new SqlParameter()
+        {
+            ParameterName = "@CategoryID",
+            SqlDbType = SqlDbType.VarChar,
+            SqlValue = p.CategoryID,
+            Direction = ParameterDirection.Input
+        };
+
+        UpdateProductCMD.Parameters.Add(updateParameter);
+
+        updateParameter = new SqlParameter()
+        {
+            ParameterName = "@Name",
+            SqlDbType = SqlDbType.VarChar,
+            SqlValue = p.Name,
+            Direction = ParameterDirection.Input
+        };
+
+        UpdateProductCMD.Parameters.Add(updateParameter);
+
+        updateParameter = new SqlParameter()
+        {
+            ParameterName = "@Price",
+            SqlDbType = SqlDbType.VarChar,
+            SqlValue = p.Price,
+            Direction = ParameterDirection.Input
+        };
+
+        UpdateProductCMD.Parameters.Add(updateParameter);
+
+        updateParameter = new SqlParameter()
+        {
+            ParameterName = "@Size",
+            SqlDbType = SqlDbType.VarChar,
+            SqlValue = p.Size,
+            Direction = ParameterDirection.Input
+        };
+
+        UpdateProductCMD.Parameters.Add(updateParameter);
+
+        updateParameter = new SqlParameter()
+        {
+            ParameterName = "@CountryOfOrigin",
+            SqlDbType = SqlDbType.VarChar,
+            SqlValue = p.CountryOfOrigin,
+            Direction = ParameterDirection.Input
+        };
+
+        UpdateProductCMD.Parameters.Add(updateParameter);
+
+        updateParameter = new SqlParameter()
+        {
+            ParameterName = "@WineSweetnessIndex",
+            SqlDbType = SqlDbType.VarChar,
+            SqlValue = p.CountryOfOrigin,
+            Direction = ParameterDirection.Input
+        };
+
+        UpdateProductCMD.Parameters.Add(updateParameter);
+
+        updateParameter = new SqlParameter()
+        {
+            ParameterName = "@Image",
+            SqlDbType = SqlDbType.VarChar,
+            SqlValue = p.CountryOfOrigin,
+            Direction = ParameterDirection.Input
+        };
+
+        UpdateProductCMD.Parameters.Add(updateParameter);
+
+        updateParameter = new SqlParameter()
+        {
+            ParameterName = "@Company",
+            SqlDbType = SqlDbType.VarChar,
+            SqlValue = p.CountryOfOrigin,
+            Direction = ParameterDirection.Input
+        };
+
+        UpdateProductCMD.Parameters.Add(updateParameter);
+
+        UpdateProductCMD.ExecuteNonQuery();
+
+        success = true;
+
+        return success;
+        
+    }
+
+    public bool AddProduct(Product p)
+    {
+        bool success = false;
+
+        SqlConnection liquorLakeConn = new SqlConnection { ConnectionString = ConfigurationManager.ConnectionStrings["LiquorLakeConnection"].ConnectionString };
+
+        liquorLakeConn.Open();
+
+        SqlCommand addProductCMD = new SqlCommand()
+        {
+            CommandText = "AddProduct",
+            CommandType = CommandType.StoredProcedure,
+            Connection = liquorLakeConn
+        };
+
+        SqlParameter addProductParam = new SqlParameter()
+        {
+            ParameterName = "@UPC",
+            SqlDbType = SqlDbType.VarChar,
+            SqlValue = p.UPC,
+            Direction = ParameterDirection.Input
+        };
+
+        addProductCMD.Parameters.Add(addProductParam);
+
+        addProductParam = new SqlParameter()
+        {
+            ParameterName = "@CategoryID",
+            SqlDbType = SqlDbType.VarChar,
+            SqlValue = p.CategoryID,
+            Direction = ParameterDirection.Input
+        };
+
+        addProductCMD.Parameters.Add(addProductParam);
+
+        addProductParam = new SqlParameter()
+        {
+            ParameterName = "@Name",
+            SqlDbType = SqlDbType.VarChar,
+            SqlValue = p.Name,
+            Direction = ParameterDirection.Input
+        };
+
+        addProductCMD.Parameters.Add(addProductParam);
+
+        addProductParam = new SqlParameter()
+        {
+            ParameterName = "@Price",
+            SqlDbType = SqlDbType.VarChar,
+            SqlValue = p.Price,
+            Direction = ParameterDirection.Input
+        };
+
+        addProductCMD.Parameters.Add(addProductParam);
+
+        addProductParam = new SqlParameter()
+        {
+            ParameterName = "@Size",
+            SqlDbType = SqlDbType.VarChar,
+            SqlValue = p.Size,
+            Direction = ParameterDirection.Input
+        };
+
+        addProductCMD.Parameters.Add(addProductParam);
+
+        addProductParam = new SqlParameter()
+        {
+            ParameterName = "@CountryOfOrigin",
+            SqlDbType = SqlDbType.VarChar,
+            SqlValue = p.CountryOfOrigin,
+            Direction = ParameterDirection.Input
+        };
+
+        addProductCMD.Parameters.Add(addProductParam);
+
+        addProductParam = new SqlParameter()
+        {
+            ParameterName = "@WineSweetnessIndex",
+            SqlDbType = SqlDbType.VarChar,
+            SqlValue = p.CountryOfOrigin,
+            Direction = ParameterDirection.Input
+        };
+
+        addProductCMD.Parameters.Add(addProductParam);
+
+        addProductParam = new SqlParameter()
+        {
+            ParameterName = "@Image",
+            SqlDbType = SqlDbType.VarChar,
+            SqlValue = p.CountryOfOrigin,
+            Direction = ParameterDirection.Input
+        };
+
+        addProductCMD.Parameters.Add(addProductParam);
+
+        addProductParam = new SqlParameter()
+        {
+            ParameterName = "@Company",
+            SqlDbType = SqlDbType.VarChar,
+            SqlValue = p.CountryOfOrigin,
+            Direction = ParameterDirection.Input
+        };
+
+        addProductCMD.Parameters.Add(addProductParam);
+
+        addProductCMD.ExecuteNonQuery();
+
+        success = true;
+
+        return success;
+
+    }
 }

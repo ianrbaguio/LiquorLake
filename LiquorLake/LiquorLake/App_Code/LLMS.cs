@@ -37,4 +37,25 @@ public class LLMS
 
         return returnProduct;
     }
+
+    public bool InsertProduct(Product p)
+    {
+        Products productManager = new Products();
+
+        return productManager.AddProduct(p);
+    }
+    
+    public bool RemoveProduct(string upc)
+    {
+        Products productManager = new Products();
+
+        return productManager.DeleteProduct(upc);
+    }
+
+    public bool UpdateProduct(Product p)
+    {
+        Products productManager = new Products();
+
+        return productManager.UpdateProduct(p);
+    }
 }
