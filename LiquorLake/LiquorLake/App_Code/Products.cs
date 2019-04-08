@@ -338,8 +338,10 @@ public class Products
         clientFTP.Connect();
 
         clientFTP.RetryAttempts = 3;
-        clientFTP.UploadFile(p.ImageUrl, "~/httpdocs/Images/" + categoryName + "/" + imageName);
-        
+        clientFTP.UploadFile(p.ImageUrl, "/httpdocs/Images/" + categoryName + "/" + imageName);
+
+        p.ImageUrl = imageName;
+
         SqlConnection liquorLakeConn = new SqlConnection { ConnectionString = ConfigurationManager.ConnectionStrings["LiquorLakeConnection"].ConnectionString };
 
         liquorLakeConn.Open();
@@ -415,7 +417,7 @@ public class Products
         {
             ParameterName = "@WineSweetnessIndex",
             SqlDbType = SqlDbType.VarChar,
-            SqlValue = p.CountryOfOrigin,
+            SqlValue = p.WineSweetnessIndex,
             Direction = ParameterDirection.Input
         };
 
@@ -425,7 +427,7 @@ public class Products
         {
             ParameterName = "@Image",
             SqlDbType = SqlDbType.VarChar,
-            SqlValue = p.CountryOfOrigin,
+            SqlValue = p.ImageUrl,
             Direction = ParameterDirection.Input
         };
 
@@ -435,7 +437,7 @@ public class Products
         {
             ParameterName = "@Company",
             SqlDbType = SqlDbType.VarChar,
-            SqlValue = p.CountryOfOrigin,
+            SqlValue = p.Company,
             Direction = ParameterDirection.Input
         };
 

@@ -12,6 +12,7 @@ USE Master
 CREATE DATABASE LiquorLake
 GO
 
+-- USE raybains_liquorlake
 USE LiquorLake
 GO
 
@@ -311,5 +312,7 @@ AS
 
 RETURN @ReturnCode
 go
+
+SELECT * FROM Product
 
 
