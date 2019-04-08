@@ -5,6 +5,8 @@ using System.Web;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using FluentFTP;
+using System.Net;
 
 /// <summary>
 /// Summary description for Products
@@ -322,10 +324,22 @@ public class Products
         
     }
 
-    public bool AddProduct(Product p)
+    public bool AddProduct(Product p, string imageName)
     {
         bool success = false;
+        string categoryName = p.CategoryName;
 
+        //Add image to FTP
+        FtpClient clientFTP = new FtpClient("www.liquorlake.com");
+
+        //FTP credentials
+        clientFTP.Credentials = new NetworkCredential("raybains", "PsiStorm1");
+
+        clientFTP.Connect();
+
+        clientFTP.RetryAttempts = 3;
+        clientFTP.UploadFile(p.ImageUrl, "~/httpdocs/Images/" + categoryName + "/" + imageName);
+        
         SqlConnection liquorLakeConn = new SqlConnection { ConnectionString = ConfigurationManager.ConnectionStrings["LiquorLakeConnection"].ConnectionString };
 
         liquorLakeConn.Open();
@@ -422,6 +436,16 @@ public class Products
             ParameterName = "@Company",
             SqlDbType = SqlDbType.VarChar,
             SqlValue = p.CountryOfOrigin,
+            Direction = ParameterDirection.Input
+        };
+
+        addProductCMD.Parameters.Add(addProductParam);
+
+        addProductParam = new SqlParameter()
+        {
+            ParameterName = "@Description",
+            SqlDbType = SqlDbType.VarChar,
+            SqlValue = p.Description,
             Direction = ParameterDirection.Input
         };
 

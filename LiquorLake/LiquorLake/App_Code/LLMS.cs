@@ -38,11 +38,11 @@ public class LLMS
         return returnProduct;
     }
 
-    public bool InsertProduct(Product p)
+    public bool InsertProduct(Product p, string imageName)
     {
         Products productManager = new Products();
 
-        return productManager.AddProduct(p);
+        return productManager.AddProduct(p, imageName);
     }
     
     public bool RemoveProduct(string upc)
