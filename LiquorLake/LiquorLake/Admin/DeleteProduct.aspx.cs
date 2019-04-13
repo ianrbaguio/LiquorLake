@@ -70,8 +70,11 @@ public partial class Admin_DeleteProduct : System.Web.UI.Page
             Button deleteButton = new Button()
             {
                 Text = "DELETE",
-                CssClass = "button"
+                CssClass = "button",
+                CommandArgument = p.UPC //Sending the UPC as the argument, we can later grab this when inside the button
             };
+
+            deleteButton.Click += new EventHandler(Delete_Click);
 
             buttonCell.Controls.Add(deleteButton);
 
@@ -107,6 +110,8 @@ public partial class Admin_DeleteProduct : System.Web.UI.Page
 
             Image i = new Image();
             i.ImageUrl = "/Images/" + p.CategoryName + "/" + p.ImageUrl;
+            i.Width = 100;
+            i.Height = 100;
 
             tc = new TableCell();
             //tc.Text = string.Format("<img src='{0}' />", i); <--- you are putting the actual image control as the image src another way to get this work/fix use i.ImageUrl
@@ -123,5 +128,21 @@ public partial class Admin_DeleteProduct : System.Web.UI.Page
 
             ProductsTable.Rows.Add(tr);
         }
+    }
+
+    private void Delete_Click (object sender, EventArgs e)
+    {
+        Button clicked = sender as Button;
+
+        string upc = clicked.CommandArgument;
+
+        LLMS requestDirector = new LLMS();
+
+        if (requestDirector.RemoveProduct(upc))
+            Response.Write("<script>alert('Removed Item')</script>");
+        else
+            Response.Write("<script>alert('Unable to remove Item')</script>");
+
+        Response.Redirect(Request.RawUrl);
     }
 }
