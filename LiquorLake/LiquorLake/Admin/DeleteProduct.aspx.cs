@@ -109,7 +109,8 @@ public partial class Admin_DeleteProduct : System.Web.UI.Page
             i.ImageUrl = "/Images/" + p.CategoryName + "/" + p.ImageUrl;
 
             tc = new TableCell();
-            tc.Text = string.Format("<img src='{0}' />", i);
+            //tc.Text = string.Format("<img src='{0}' />", i); <--- you are putting the actual image control as the image src another way to get this work/fix use i.ImageUrl
+            tc.Controls.Add(i);
             tr.Cells.Add(tc);
 
             tc = new TableCell();
