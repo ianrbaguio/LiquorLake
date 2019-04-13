@@ -13,7 +13,7 @@
 
             <div>
                 <asp:TextBox ID="tbFilter" runat="server"></asp:TextBox>
-                <br />
+
                 <asp:Button ID="btnSearchProduct" runat="server" Text="Search Product" />
             </div>
 

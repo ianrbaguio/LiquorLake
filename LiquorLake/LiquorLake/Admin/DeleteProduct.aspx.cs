@@ -37,7 +37,7 @@ public partial class Admin_DeleteProduct : System.Web.UI.Page
         tr.Cells.Add(tc);
 
         tc = new TableCell();
-        tc.Text = "Size";
+        tc.Text = "Size(ml)";
         tr.Cells.Add(tc);
 
         tc = new TableCell();
@@ -105,8 +105,11 @@ public partial class Admin_DeleteProduct : System.Web.UI.Page
             tc.Text = p.WineSweetnessIndex;
             tr.Cells.Add(tc);
 
+            Image i = new Image();
+            i.ImageUrl = "/Images/" + p.CategoryName + "/" + p.ImageUrl;
+
             tc = new TableCell();
-            tc.Text = p.ImageUrl;
+            tc.Text = string.Format("<img src='{0}' />", i);
             tr.Cells.Add(tc);
 
             tc = new TableCell();
