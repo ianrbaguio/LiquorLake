@@ -9,6 +9,7 @@
         <div class="search_bar_container">
             <div class="search_textbox"> 
                 <asp:TextBox ID="SearchTB" placeholder="Search" runat="server"></asp:TextBox>
+
             </div>
             <div class="search_button">
                 <button id="SearchButton" runat="server" onserverclick="SearchButton_ServerClick">
