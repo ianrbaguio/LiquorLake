@@ -22,8 +22,8 @@ public partial class AddProduct : System.Web.UI.Page
         newProduct.CategoryID = int.Parse(CategoryDropDownList.SelectedValue);
         newProduct.CategoryName = CategoryDropDownList.SelectedItem.Text;
         newProduct.Name = ProductNameTB.Text;
-        newProduct.Price = decimal.Parse(PriceTB.Text);
         newProduct.Size = int.Parse(SizeTB.Text);
+        newProduct.Price = decimal.Parse(PriceTB.Text);
         newProduct.CountryOfOrigin = CountryOfOriginTB.Text;
         newProduct.WineSweetnessIndex = WineSweetnessIndexDropDownList.SelectedValue;
         newProduct.Company = CompanyTB.Text;

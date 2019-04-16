@@ -140,7 +140,56 @@ public partial class Admin_UpdateProduct : System.Web.UI.Page
 
         ProductInfoPanel.Visible = true;
 
-        Product currentProduct = requestDirector.
+        Product currentProduct = requestDirector.GetProductDetails(clicked.CommandArgument.ToString());
+
+        Image i = new Image();
+        i.ImageUrl = currentProduct.ImageUrl;
+
+        tbUPC.Text = currentProduct.UPC;
+        tbSize.Text = currentProduct.Size.ToString();
+        tbPrice.Text = currentProduct.Price.ToString();
+        tbName.Text = currentProduct.Name;
+        tbDescription.Text = currentProduct.Description;
+        tbCountryOfOrigin.Text = currentProduct.CountryOfOrigin;
+        tbCompany.Text = currentProduct.Company;
+        ddlCategoryName.SelectedValue = currentProduct.WineSweetnessIndex;
+        ddlCategoryName.SelectedIndex = currentProduct.CategoryID;
+        ItemImage = i;
+        
     }
 
+
+    protected void btnUpdateProduct_Click(object sender, EventArgs e)
+    {
+        LLMS requestDirector = new LLMS();
+
+        Product updatedProduct = new Product();
+
+        updatedProduct.CategoryID = int.Parse(ddlCategoryName.SelectedValue);
+        updatedProduct.CategoryName = ddlCategoryName.SelectedItem.Text;
+        updatedProduct.Company = tbCompany.Text;
+        updatedProduct.CountryOfOrigin = tbCountryOfOrigin.Text;
+        updatedProduct.Description = tbDescription.Text;
+        updatedProduct.Name = tbName.Text;
+        updatedProduct.Price = decimal.Parse(tbPrice.Text);
+        updatedProduct.Size = int.Parse(tbSize.Text);
+        updatedProduct.UPC = tbUPC.Text;
+        updatedProduct.WineSweetnessIndex = ddlCategoryName.SelectedValue.ToString();
+
+        if(!fuImage.HasFile)
+            updatedProduct.ImageUrl = ItemImage.ImageUrl;
+        else
+        {
+            fuImage.SaveAs(Server.MapPath("~/UploadImage/" + fuImage.FileName));
+
+            ItemImage.ImageUrl = "/UploadImage/" + fuImage.FileName;
+
+            updatedProduct.ImageUrl = Server.MapPath("~/UploadImage/" + fuImage.FileName);
+        }
+
+        if (requestDirector.UpdateProduct(updatedProduct))
+            lblConfirmation.Text = "Successfully update product";
+        else
+            lblConfirmation.Text = "Unable to update product";
+    }
 }
