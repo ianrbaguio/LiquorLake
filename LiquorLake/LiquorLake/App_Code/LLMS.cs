@@ -58,4 +58,11 @@ public class LLMS
 
         return productManager.UpdateProduct(p);
     }
+
+    public bool RegisterUser(string username, string passwordHash)
+    {
+        Users UserManager = new Users();
+
+        return UserManager.StoreAccountDetails(username, passwordHash);
+    }
 }

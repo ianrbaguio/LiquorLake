@@ -17,7 +17,7 @@ USE LiquorLake
 GO
 
 
--- Table Creations
+-- ******************* TABLE CREATIONS *******************************
 CREATE TABLE Categories(
 	CategoryID INT IDENTITY(1,1) NOT NULL,
 	CategoryName NVARCHAR(50) NOT NULL,
@@ -89,6 +89,19 @@ VALUES
 (620213015600,2,'Bacardi',13.99,375,NULL,NULL,'Spirits_liquor_placeholder.png','Bacardi','Single 375ml bottle of Barcardi White rum'),
 (048415345552,2,'Lambs Classic',13.50,375,NULL,NULL,'Spirits_048415345552.jpg','Corby Spirit And Wine Limited','Single 375ml bottle of Lambs Classic white rum'),
 (774837595373,1,'Brava 15 Can',24.50,355,NULL,NULL,'Beer_774837595373.jpg','Brava Brewing Company','15 pack of Brava beer, 355ml per can')
+GO
+
+
+-- Creation of User table
+CREATE TABLE Users(
+	Username VARCHAR(50) NOT NULL,
+	Password VARCHAR(50) NOT NULL,
+	Salt VARCHAR(50) NOT NULL
+	Role VARCHAR(25) NOT NULL
+)
+
+ALTER TABLE Users
+	ADD CONSTRAINT PK_Users_Username PRIMARY KEY (Username)
 GO
 
 /*******************************************************************************************************************************
@@ -313,6 +326,30 @@ AS
 RETURN @ReturnCode
 go
 
-SELECT * FROM Product
+-- Creation of RegisterUser stored procedure
+CREATE PROCEDURE RegisterUser(@Username VARCHAR(50) = NULL,
+							  @PasswordHash VARCHAR(50) = NULL)
+AS
+	DECLARE @ReturnCode INT
+	SET @ReturnCode = 1
+
+	IF @Username IS NULL
+		RAISERROR('RegisterUser - Required Parameter: @Username', 16, 1)
+	ELSE IF @PasswordHash IS NULL
+		RAISERROR('RegisterUser - Required Parameter: @PasswordHash', 16, 1)
+	ELSE
+		BEGIN
+			
+			INSERT INTO Users(Username, Password, Role)
+			VALUES(@Username, @PasswordHash, 'Admin')
+
+			IF @@ERROR = 0
+				SET @ReturnCode = 0
+			ELSE
+				RAISERROR('RegisterUser - INSERT Error on registering user', 16, 1)
+		END
+
+	RETURN @ReturnCode
+GO
 
 
