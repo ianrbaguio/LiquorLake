@@ -18,7 +18,7 @@
         <div id="LiquorLakeHeader" class="liquor_lake_header">
             <div class="liqour_lake_logo">
                 <asp:HyperLink ID="LiquorLakeHyperLink" NavigateUrl="~/Default.aspx" runat="server">
-                    <img src="App_Themes/Master/Images/liqourlakelogo.png" alt="Liqour Lake Logo"/>
+                    <img src="/App_Themes/Master/Images/liqourlakelogo.png" alt="Liqour Lake Logo"/>
                 </asp:HyperLink>
             </div>
             <div class="liqour_lake_navigation">
@@ -32,7 +32,7 @@
         </div>
         <div id="LiquorLakeFooter" class="liquor_lake_footer">
             <div class="footer_logo_image">
-                <img src="App_Themes/Master/Images/liqourlakelogo.png" alt="Liqour Lake Logo"/>
+                <img src="/App_Themes/Master/Images/liqourlakelogo.png" alt="Liqour Lake Logo"/>
             </div>
             <div id="FooterCopyrightText" class="footer_copyright_text">
                 <p>&copy;2019 &#183; Website created by <a href="https://github.com/ajsingh18" target="_blank">Ajay Singh</a> &amp; <a href="http://ianrbaguio.com/" target="_blank">Ian Baguio</a></p>

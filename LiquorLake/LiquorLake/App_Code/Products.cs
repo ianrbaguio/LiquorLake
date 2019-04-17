@@ -329,16 +329,16 @@ public class Products
         bool success = false;
         string categoryName = p.CategoryName;
 
-        //Add image to FTP
-        FtpClient clientFTP = new FtpClient("www.liquorlake.com");
+        ////Add image to FTP
+        //FtpClient clientFTP = new FtpClient("www.liquorlake.com");
 
-        //FTP credentials
-        clientFTP.Credentials = new NetworkCredential("raybains", "PsiStorm1");
+        ////FTP credentials
+        //clientFTP.Credentials = new NetworkCredential("raybains", "PsiStorm1");
 
-        clientFTP.Connect();
+        //clientFTP.Connect();
 
-        clientFTP.RetryAttempts = 3;
-        clientFTP.UploadFile(p.ImageUrl, "/httpdocs/Images/" + categoryName + "/" + imageName);
+        //clientFTP.RetryAttempts = 3;
+        //clientFTP.UploadFile(p.ImageUrl, "/httpdocs/Images/" + categoryName + "/" + imageName);
 
         p.ImageUrl = imageName;
 

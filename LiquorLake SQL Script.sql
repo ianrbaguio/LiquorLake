@@ -91,12 +91,13 @@ VALUES
 (774837595373,1,'Brava 15 Can',24.50,355,NULL,NULL,'Beer_774837595373.jpg','Brava Brewing Company','15 pack of Brava beer, 355ml per can')
 GO
 
+SELECT * FROM Product
 
 -- Creation of User table
 CREATE TABLE Users(
 	Username VARCHAR(50) NOT NULL,
 	Password VARCHAR(50) NOT NULL,
-	Salt VARCHAR(50) NOT NULL
+	Salt VARCHAR(50) NOT NULL,
 	Role VARCHAR(25) NOT NULL
 )
 
@@ -328,7 +329,8 @@ go
 
 -- Creation of RegisterUser stored procedure
 CREATE PROCEDURE RegisterUser(@Username VARCHAR(50) = NULL,
-							  @PasswordHash VARCHAR(50) = NULL)
+							  @PasswordHash VARCHAR(50) = NULL,
+							  @Salt VARCHAR(50) = NULL)
 AS
 	DECLARE @ReturnCode INT
 	SET @ReturnCode = 1
@@ -337,16 +339,38 @@ AS
 		RAISERROR('RegisterUser - Required Parameter: @Username', 16, 1)
 	ELSE IF @PasswordHash IS NULL
 		RAISERROR('RegisterUser - Required Parameter: @PasswordHash', 16, 1)
+	ELSE IF @Salt IS NULL
+		RAISERROR('RegisterUser - Required Parameter: @Salt', 16, 1)
 	ELSE
 		BEGIN
 			
-			INSERT INTO Users(Username, Password, Role)
-			VALUES(@Username, @PasswordHash, 'Admin')
+			INSERT INTO Users(Username, Password, Salt, Role)
+			VALUES(@Username, @PasswordHash, @Salt,'Admin')
 
 			IF @@ERROR = 0
 				SET @ReturnCode = 0
 			ELSE
 				RAISERROR('RegisterUser - INSERT Error on registering user', 16, 1)
+		END
+
+	RETURN @ReturnCode
+GO
+
+CREATE PROCEDURE UserLogIn(@Username VARCHAR(50) = NULL)
+AS
+	DECLARE @ReturnCode INT
+	SET @ReturnCode = 1
+
+	IF @Username IS NULL
+		RAISERROR('UserLogIn - Required Parameter: @Username', 16, 1)
+	ELSE
+		BEGIN
+			SELECT Username,
+				   Password,
+				   Salt,
+				   Role
+			FROM Users
+			WHERE Username = @Username
 		END
 
 	RETURN @ReturnCode
