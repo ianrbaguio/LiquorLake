@@ -12,11 +12,154 @@
 }
 /*-------------------- End of Site Wide --------------------*/
 
+/*-------------------- Admin: Default --------------------*/
+.admin_default_container {
+	width: 800px;
+	text-align: center;
+	padding: 20px;
+}
+
+.admin_default_container h2 {
+	display: block;
+}
+
+.admin_default_row {
+	width: 100%;
+	display: block;
+}
+
+.admin_default_row_item {
+	width: 33.3%;
+	float: left;
+	text-align: center;
+}
+
+.admin_default_row_item a {
+	background-color: #3498db;
+	border: 0;
+	padding: 10px;
+	border-radius: 3px;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+#LogOutButton {
+	border: 0;
+	border-radius: 3px;
+}
+
+/*-------------------- End of Admin: Default --------------------*/
+/*-------------------- Admin: Login --------------------*/
+#AdminContainer {
+	width: 300px;
+	margin: 20px auto;
+	text-align: center;
+}
+
+.admin_login_input_container {
+	margin: 10px 0;
+}
+
+.admin_login_button {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #3498db;
+	border: 0;
+	padding: 10px;
+	border-radius: 3px;
+	color: #ffffff;
+	font-weight: bold;
+}
+/*-------------------- End of Admin: Login --------------------*/
+
+
+/*-------------------- Admin: Add Product --------------------*/
+/*-------------------- End of Admin: Add Product --------------------*/
+.admin_container {
+	width: 800px;
+	padding: 20px;
+	margin: auto;
+}
+
+.admin_container h2 {
+	text-align: center;
+}
+
+.admin_row_container {
+	width: 50%;	
+	margin: 10px auto;	
+}
+
+.admin_row_container_left, .admin_row_container_right {
+	display: block;
+	float: left;
+}
+
+.admin_row_container_left {
+	width: 40%;
+}
+
+.admin_row_container_right {
+	width: 60%;
+}
+
+.admin_image_heading, .admin_row_container_left {
+	font-weight: bold;	
+}
+
+.admin_image_row {
+	margin-top: 5px;
+}
+
+#ImageUploadButton, #UploadImageButton, #btnSearchProduct {
+	background-color: #3498db;
+	border: 0;
+	padding: 5px;
+	border-radius: 3px;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+.admin_row_container_right input, .admin_row_container_right select {
+	width: 100%;
+}
+
+#ImageDiv, #AddProductButton, #btnUpdateProduct {
+	text-align: center;
+}
+
+#AddProductButton, #btnUpdateProduct {
+	width: 300px;
+	margin: 0 auto;
+	background-color: #3498db;
+	border: 0;
+	padding: 5px;
+	border-radius: 3px;
+	color: #ffffff;
+	font-weight: bold;
+}
+/*-------------------- Admin: Update Product --------------------*/
+.update_product_search_container {
+	text-align: center;
+}
+
+.admin_update_row {
+	margin: 5px 0;
+}
+/*-------------------- End of Admin: Update Product --------------------*/
+
+/*-------------------- Admin: Delete Product --------------------*/
+.delete_product_row {
+	text-align: center;
+	margin: 10px 0;
+}
+/*-------------------- End of Admin: Delete Product --------------------*/
+
 /*-------------------- Header/Naviagtion --------------------*/
 .liquor_lake_header {
-    overflow: auto;
-    padding: 20px 30px;
-    background-color: #212121;
+	overflow: auto;
+	padding: 20px 30px;
+	background-color: #212121;
 }
 
 .liqour_lake_logo {

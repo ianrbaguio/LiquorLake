@@ -1,122 +1,127 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/LiquorLakeMasterPage.master" AutoEventWireup="true" CodeFile="AddProduct.aspx.cs" Inherits="AddProduct" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server"></asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <div style="width: 60%; margin: 0 auto; text-align: center;">
+    <div class="admin_container">
         <asp:HyperLink ID="AdminDefaultHyperLink" NavigateUrl="~/Admin/AdminDefault.aspx" runat="server">Home</asp:HyperLink>
-        <h2>ADD NEW PRODUCT</h2>
-        <br />
-        <div id="ImageDiv" style="padding: 10px;">
-            <span style="color:red;">*</span>Image:
-            <asp:FileUpload ID="ImageUpload" runat="server" accept=".png,.jpg,.jpeg"/> 
-            <asp:Button ID="ImageUploadButton" runat="server" Text="Upload" OnClick="ImageUploadButton_Click" CausesValidation="false" />
-            <br />
-            <asp:Image ID="UploadedImage" runat="server" style="padding:10px 0;" />
+        <h2>ADD NEW PRODUCT</h2>        
+        <div id="ImageDiv" class="admin_row_container">
+			<div class="admin_image_heading">
+				<span style="color:red;">*</span>
+				<span>Image</span>
+			</div>
+			<div class="admin_image_row">
+				<asp:FileUpload ID="ImageUpload" runat="server" accept=".png,.jpg,.jpeg"/> 			
+			</div>
+			<div class="admin_image_row">
+				<asp:Button ID="ImageUploadButton" runat="server" Text="Upload" OnClick="ImageUploadButton_Click" CausesValidation="false" />
+			</div>
+			<div class="admin_image_row">
+				<asp:Image ID="UploadedImage" runat="server" style="padding:10px 0;" />
+			</div>
         </div>
-
-        <div id="UPCDiv" style="width: 46%; display: inline-block; padding: 10px 0;">
-            <span style="display: inline-block; width: 40%; text-align: right;">UPC:</span>
-            <asp:TextBox ID="UPCTB" runat="server"></asp:TextBox><span style="color:red;">*</span>
-            <br />
-            <asp:RequiredFieldValidator ID="UPCRequiredFieldValidator" 
-                                        runat="server" 
-                                        ErrorMessage="Input Required!"
-                                        ControlToValidate="UPCTB"
-                                        Display="Dynamic"></asp:RequiredFieldValidator>
+        <div id="UPCDiv" class="admin_row_container">
+			<div class="admin_row_container_left">
+				<span style="color:red;">*</span>
+				<span>UPC:</span>
+			</div>
+			<div class="admin_row_container_right">
+				<asp:TextBox ID="UPCTB" runat="server"></asp:TextBox>
+			</div>
+            <asp:RequiredFieldValidator ID="UPCRequiredFieldValidator" runat="server" ErrorMessage="Input Required!" ControlToValidate="UPCTB" Display="Dynamic"></asp:RequiredFieldValidator>
         </div>
-
-        <div id="CategoryDiv" style="width: 46%; display: inline-block; padding: 10px 0;">
-            <span style="display: inline-block; width: 40%; text-align: right;">Category:</span>
-            <asp:DropDownList ID="CategoryDropDownList" runat="server" AutoPostBack="true" OnSelectedIndexChanged="CategoryDropDownList_SelectedIndexChanged">
-                <asp:ListItem Value="1">Beer</asp:ListItem>
-                <asp:ListItem Value="2">Spirits</asp:ListItem>
-                <asp:ListItem Value="3">Wine</asp:ListItem>
-            </asp:DropDownList><span style="color:red;">*</span>
+        <div id="CategoryDiv" class="admin_row_container">
+			<div class="admin_row_container_left">
+				<span style="color:red;">*</span>
+				<span>Category:</span>
+			</div>
+			<div class="admin_row_container_right">
+				<asp:DropDownList ID="CategoryDropDownList" runat="server" AutoPostBack="true" OnSelectedIndexChanged="CategoryDropDownList_SelectedIndexChanged">
+					<asp:ListItem Value="1">Beer</asp:ListItem>
+					<asp:ListItem Value="2">Spirits</asp:ListItem>
+					<asp:ListItem Value="3">Wine</asp:ListItem>
+				</asp:DropDownList>
+			</div>
         </div>
-        <br />
-
-        <div id="ProductNameDiv" style="width: 46%; display: inline-block; padding: 10px 0;">
-            <span style="display: inline-block; width: 40%; text-align: right;">Product Name:</span>
-            <asp:TextBox ID="ProductNameTB" runat="server"></asp:TextBox><span style="color:red;">*</span>
-            <br />
-            <asp:RequiredFieldValidator ID="ProductNameRequiredFieldValidator" 
-                                        runat="server" 
-                                        ErrorMessage="Input required!"
-                                        ControlToValidate="ProductNameTB"
-                                        Display="Dynamic"></asp:RequiredFieldValidator>
+        <div id="ProductNameDiv" class="admin_row_container">
+			<div class="admin_row_container_left">
+				<span style="color:red;">*</span>
+				<span>Product Name:</span>
+			</div>
+			<div class="admin_row_container_right">
+				<asp:TextBox ID="ProductNameTB" runat="server"></asp:TextBox>
+			</div>
+            <asp:RequiredFieldValidator ID="ProductNameRequiredFieldValidator" runat="server" ErrorMessage="Input required!" ControlToValidate="ProductNameTB" Display="Dynamic"></asp:RequiredFieldValidator>
         </div>
-
-
-        <div id="PriceDiv" style="width: 46%; display: inline-block; padding: 10px 0;">
-            <span style="display: inline-block; width: 40%; text-align: right;">Price:</span>
-            <asp:TextBox ID="PriceTB" runat="server"></asp:TextBox><span style="color:red;">*</span>
-            <br />
-            <asp:RequiredFieldValidator ID="PriceRequiredFieldValidator" 
-                                        runat="server" 
-                                        ErrorMessage="Input required!"
-                                        ControlToValidate="PriceTB"
-                                        Display="Dynamic"></asp:RequiredFieldValidator>
+        <div id="PriceDiv" class="admin_row_container">
+			<div class="admin_row_container_left">
+				<span style="color:red;">*</span>
+				<span>Price:</span>
+			</div>
+			<div class="admin_row_container_right">
+				<asp:TextBox ID="PriceTB" runat="server"></asp:TextBox>
+			</div>
+            <asp:RequiredFieldValidator ID="PriceRequiredFieldValidator" runat="server" ErrorMessage="Input required!" ControlToValidate="PriceTB" Display="Dynamic"></asp:RequiredFieldValidator>
         </div>
-        <br />
-
-        <div id="SizeDiv" style="width: 46%; display: inline-block; padding: 10px 0;">
-            <span style="display: inline-block; width: 40%; text-align: right;">Size:</span>
-            <asp:TextBox ID="SizeTB" runat="server"></asp:TextBox><span style="color:red;">*</span>
-            <br />
-            <asp:RequiredFieldValidator ID="SizeRequiredFieldValidator" 
-                                        runat="server" 
-                                        ErrorMessage="Input required!"
-                                        ControlToValidate="SizeTB"
-                                        Display="Dynamic"></asp:RequiredFieldValidator>
+        <div id="SizeDiv" class="admin_row_container">
+			<div class="admin_row_container_left">
+				<span style="color:red;">*</span>
+				<span>Size:</span>
+			</div>
+			<div class="admin_row_container_right">
+				<asp:TextBox ID="SizeTB" runat="server"></asp:TextBox>
+			</div>
+            <asp:RequiredFieldValidator ID="SizeRequiredFieldValidator" runat="server" ErrorMessage="Input required!" ControlToValidate="SizeTB" Display="Dynamic"></asp:RequiredFieldValidator>
         </div>
-
-        <div id="CountryOfOriginDiv" style="width: 46%; display: inline-block; padding: 10px 0;">
-            <span style="display: inline-block; width: 40%; text-align: right;">Country Of Origin:</span>
-            <asp:TextBox ID="CountryOfOriginTB" runat="server"></asp:TextBox>
-            <br />
+        <div id="CountryOfOriginDiv" class="admin_row_container">
+			<div class="admin_row_container_left">
+				<span>Country Of Origin:</span>
+			</div>
+			<div class="admin_row_container_right">
+				<asp:TextBox ID="CountryOfOriginTB" runat="server"></asp:TextBox>
+			</div>
         </div>
-        <br />
-
-        <div id="CompanyDiv" style="width: 46%; display: inline-block; padding: 10px 0;">
-            <span style="display: inline-block; width: 40%; text-align: right;">Company:</span>
-            <asp:TextBox ID="CompanyTB" runat="server"></asp:TextBox><span style="color:red;">*</span>
-            <br />
-            <asp:RequiredFieldValidator ID="CompanyRequiredFieldValidator" 
-                                        runat="server" 
-                                        ErrorMessage="Input required!"
-                                        ControlToValidate="CompanyTB"
-                                        Display="Dynamic"></asp:RequiredFieldValidator>
-
+        <div id="CompanyDiv" class="admin_row_container">
+			<div class="admin_row_container_left">
+				<span style="color:red;">*</span>
+				<span>Company:</span>
+			</div>
+			<div class="admin_row_container_right">
+				<asp:TextBox ID="CompanyTB" runat="server"></asp:TextBox>
+			</div>
+            <asp:RequiredFieldValidator ID="CompanyRequiredFieldValidator" runat="server" ErrorMessage="Input required!" ControlToValidate="CompanyTB" Display="Dynamic"></asp:RequiredFieldValidator>
         </div>
-
-        <div id="DescriptionDiv" style="width: 46%; display: inline-block; padding: 10px 0;">
-            <span style="display: inline-block; width: 40%; text-align: right;">Description:</span>
-            <asp:TextBox ID="DescriptionTB" runat="server"></asp:TextBox>
-        </div>
-        <br />
-
+        <div id="DescriptionDiv" class="admin_row_container">
+			<div class="admin_row_container_left">
+				<span>Description:</span>
+			</div>
+			<div class="admin_row_container_right">
+				<asp:TextBox ID="DescriptionTB" runat="server"></asp:TextBox>				
+			</div>
+        </div>       
         <asp:Panel ID="WineCategoryPanel" Visible="false" runat="server">
-            <div id="WineSweetnessIndex" style="width: 46%; display: inline-block; padding: 10px 0;">
-            <span style="display: inline-block; width: 50%; text-align: right;">Wine Sweetness Index:</span>
-            <asp:DropDownList ID="WineSweetnessIndexDropDownList" runat="server" AutoPostBack="true">
-                <asp:ListItem Value="N/A">N/A</asp:ListItem>
-                <asp:ListItem Value="Extra Dry">Extra Dry</asp:ListItem>
-                <asp:ListItem Value="Dry">Dry</asp:ListItem>
-                <asp:ListItem Value="Medium">Medium</asp:ListItem>
-                <asp:ListItem Value="Medium Sweet">Medium Sweet</asp:ListItem>
-                <asp:ListItem Value="Sweet">Sweet</asp:ListItem>
-            </asp:DropDownList>
-        </div>
+            <div id="WineSweetnessIndex" class="admin_row_container">
+				<div class="admin_row_container_left">
+					<span>Wine Sweetness Index:</span>
+				</div>
+				<div class="admin_row_container_right">
+					<asp:DropDownList ID="WineSweetnessIndexDropDownList" runat="server" AutoPostBack="true">
+						<asp:ListItem Value="N/A">N/A</asp:ListItem>
+						<asp:ListItem Value="Extra Dry">Extra Dry</asp:ListItem>
+						<asp:ListItem Value="Dry">Dry</asp:ListItem>
+						<asp:ListItem Value="Medium">Medium</asp:ListItem>
+						<asp:ListItem Value="Medium Sweet">Medium Sweet</asp:ListItem>
+						<asp:ListItem Value="Sweet">Sweet</asp:ListItem>
+					</asp:DropDownList>
+				</div>
+			</div>
         </asp:Panel>
-
-        <br />
-        <asp:Button ID="AddProductButton" runat="server" Text="Add Product" Width="125" style="margin:10px 0;" OnClick="AddProductButton_Click" />
+		<div class="admin_row_container">
+			<asp:Button ID="AddProductButton" runat="server" Text="Add Product" OnClick="AddProductButton_Click" />
+		</div>
         <br />
         <asp:Label ID="AddProductLabel" runat="server"></asp:Label>
     </div>
-
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="jQueryPlaceHolder" runat="Server">
-</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="jQueryPlaceHolder" runat="Server"></asp:Content>
 
