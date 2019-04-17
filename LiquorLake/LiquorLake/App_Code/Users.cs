@@ -35,7 +35,7 @@ public class Users
         return hashedPassword;
     }
 
-    public bool StoreAccountDetails(string username, string passwordHash)
+    public bool StoreAccountDetails(string username, string passwordHash, string salt)
     {
         bool Success = false;
 
@@ -69,6 +69,16 @@ public class Users
 
         RegisterUserCMD.Parameters.Add(PasswordHashParameter);
 
+        SqlParameter SaltParameter = new SqlParameter()
+        {
+            ParameterName = "@Salt",
+            SqlValue = salt,
+            SqlDbType = SqlDbType.VarChar,
+            Direction = ParameterDirection.Input
+        };
+
+        RegisterUserCMD.Parameters.Add(SaltParameter);
+
         RegisterUserCMD.ExecuteNonQuery();
 
         liquorLakeConn.Close();
@@ -76,5 +86,63 @@ public class Users
         Success = true;
 
         return Success;
+    }
+
+    public bool VerifyPassword(string username, string password)
+    {
+        bool bMatch = false;
+
+        User LoginUser = new User();
+
+        SqlConnection liquorLakeConn = new SqlConnection { ConnectionString = ConfigurationManager.ConnectionStrings["LiquorLakeConnection"].ConnectionString };
+
+        liquorLakeConn.Open();
+
+        SqlCommand VerifyPasswordCMD = new SqlCommand()
+        {
+            CommandText = "UserLogIn",
+            CommandType = CommandType.StoredProcedure,
+            Connection = liquorLakeConn
+        };
+
+        SqlParameter UsernameParameter = new SqlParameter()
+        {
+            ParameterName = "@Username",
+            SqlDbType = SqlDbType.VarChar,
+            SqlValue = username,
+            Direction = ParameterDirection.Input
+        };
+
+        VerifyPasswordCMD.Parameters.Add(UsernameParameter);
+
+        SqlDataReader VerifyPasswordReader = VerifyPasswordCMD.ExecuteReader();
+
+        if (VerifyPasswordReader.HasRows)
+        {
+            VerifyPasswordReader.Read();
+
+            LoginUser.Username = VerifyPasswordReader["Username"].ToString();
+            LoginUser.Password = VerifyPasswordReader["Password"].ToString();
+            LoginUser.Salt = VerifyPasswordReader["Salt"].ToString();
+            LoginUser.Role = VerifyPasswordReader["Role"].ToString();
+
+        }
+
+        VerifyPasswordReader.Close();
+
+        //int saltSize = 5;
+
+        string hashedPasswordAndSalt = CreatePasswordHash(password, LoginUser.Salt);
+
+        bMatch = hashedPasswordAndSalt.Equals(LoginUser.Password);
+
+        liquorLakeConn.Close();
+
+        return bMatch;
+    }
+
+    public string GetRoles()
+    {
+        return "Admin";
     }
 }

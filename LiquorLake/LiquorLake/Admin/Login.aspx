@@ -11,7 +11,7 @@
             <br />
             <br />
             <span style="min-width:100px; display:inline-block;">Password:</span>
-        <asp:TextBox ID="PasswordTB" runat="server"></asp:TextBox>
+        <asp:TextBox ID="PasswordTB" TextMode="Password" runat="server"></asp:TextBox>
             <br />
             <br />
             <asp:Button ID="LoginButton" Width="100%" style="margin:auto 0;" runat="server" Text="Login" OnClick="LoginButton_Click" />

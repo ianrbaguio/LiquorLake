@@ -59,10 +59,10 @@ public class LLMS
         return productManager.UpdateProduct(p);
     }
 
-    public bool RegisterUser(string username, string passwordHash)
+    public bool RegisterUser(string username, string passwordHash, string salt)
     {
         Users UserManager = new Users();
 
-        return UserManager.StoreAccountDetails(username, passwordHash);
+        return UserManager.StoreAccountDetails(username, passwordHash, salt);
     }
 }
