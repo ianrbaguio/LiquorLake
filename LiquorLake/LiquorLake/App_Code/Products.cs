@@ -166,6 +166,7 @@ public class Products
 
             returnProduct.UPC = GetProductDetailsReader["UPC"].ToString();
             returnProduct.CategoryID = int.Parse(GetProductDetailsReader["CategoryID"].ToString());
+            returnProduct.CategoryName = GetProductDetailsReader["CategoryName"].ToString();
             returnProduct.Company = GetProductDetailsReader["Company"].ToString();
             returnProduct.Price = (decimal)GetProductDetailsReader["Price"];
             returnProduct.CountryOfOrigin = GetProductDetailsReader["CountryOfOrigin"].ToString();
@@ -214,6 +215,17 @@ public class Products
     public bool UpdateProduct(Product p )
     {
         bool success = false;
+
+        //Add image to FTP
+        FtpClient clientFTP = new FtpClient("www.liquorlake.com");
+
+        //FTP credentials
+        clientFTP.Credentials = new NetworkCredential("raybains", "PsiStorm1");
+
+        clientFTP.Connect();
+
+        clientFTP.RetryAttempts = 3;
+        clientFTP.UploadFile(p.ImageUrl, "/httpdocs/Images/" + p.CategoryName + "/" + p.ImageUrl);
 
         SqlConnection liquorLakeConn = new SqlConnection { ConnectionString = ConfigurationManager.ConnectionStrings["LiquorLakeConnection"].ConnectionString };
 
@@ -340,16 +352,16 @@ public class Products
         bool success = false;
         string categoryName = p.CategoryName;
 
-        ////Add image to FTP
-        //FtpClient clientFTP = new FtpClient("www.liquorlake.com");
+        //Add image to FTP
+        FtpClient clientFTP = new FtpClient("www.liquorlake.com");
 
-        ////FTP credentials
-        //clientFTP.Credentials = new NetworkCredential("raybains", "PsiStorm1");
+        //FTP credentials
+        clientFTP.Credentials = new NetworkCredential("raybains", "PsiStorm1");
 
-        //clientFTP.Connect();
+        clientFTP.Connect();
 
-        //clientFTP.RetryAttempts = 3;
-        //clientFTP.UploadFile(p.ImageUrl, "/httpdocs/Images/" + categoryName + "/" + imageName);
+        clientFTP.RetryAttempts = 3;
+        clientFTP.UploadFile(p.ImageUrl, "/httpdocs/Images/" + categoryName + "/" + imageName);
 
         p.ImageUrl = imageName;
 

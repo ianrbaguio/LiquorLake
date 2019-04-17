@@ -4,14 +4,25 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
 
 public partial class Admin_UpdateProduct : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(IsPostBack)
+        if (IsPostBack)
         {
             ListProducts();
+        }
+
+        if (!IsPostBack)
+        {
+            //Delete all files in the UploadImage temp folder
+            string[] filePaths = Directory.GetFiles(Server.MapPath("~/UploadImage/"));
+            foreach (string file in filePaths)
+            {
+                File.Delete(file);
+            }
         }
     }
 
@@ -144,7 +155,7 @@ public partial class Admin_UpdateProduct : System.Web.UI.Page
 
     private void Update_Click(object sender, EventArgs e)
     {
-        Response.Write("Clicked details");
+        //Response.Write("Clicked details");
 
         Button clicked = sender as Button;
         LLMS requestDirector = new LLMS();
@@ -153,8 +164,8 @@ public partial class Admin_UpdateProduct : System.Web.UI.Page
 
         Product currentProduct = requestDirector.GetProductDetails(clicked.CommandArgument.ToString());
 
-        Image i = new Image();
-        i.ImageUrl = currentProduct.ImageUrl;
+        //Image i = new Image();
+        //i.ImageUrl = "~/Images/" + currentProduct.CategoryName + "/" + currentProduct.ImageUrl;
 
         tbUPC.Text = currentProduct.UPC;
         tbSize.Text = currentProduct.Size.ToString();
@@ -165,46 +176,66 @@ public partial class Admin_UpdateProduct : System.Web.UI.Page
         tbCompany.Text = currentProduct.Company;
         ddlCategoryName.SelectedIndex = ddlCategoryName.Items.IndexOf(ddlCategoryName.Items.FindByText(currentProduct.CategoryName));
         ddlSweetnessIndex.SelectedIndex = ddlSweetnessIndex.Items.IndexOf(ddlSweetnessIndex.Items.FindByText(currentProduct.WineSweetnessIndex));
-        ItemImage = i;
-        
+        ItemImage.ImageUrl = "/Images/" + currentProduct.CategoryName + "/" + currentProduct.ImageUrl;
+        ItemImage.AlternateText = currentProduct.ImageUrl;
+
     }
 
 
     protected void btnUpdateProduct_Click(object sender, EventArgs e)
     {
-        LLMS requestDirector = new LLMS();
+        if (ItemImage.AlternateText != "")
+        {
+            LLMS requestDirector = new LLMS();
 
-        Product updatedProduct = new Product();
+            Product updatedProduct = new Product();
 
-        updatedProduct.CategoryID = int.Parse(ddlCategoryName.SelectedValue);
-        updatedProduct.CategoryName = ddlCategoryName.SelectedItem.Text;
-        updatedProduct.Company = tbCompany.Text;
-        updatedProduct.CountryOfOrigin = tbCountryOfOrigin.Text;
-        updatedProduct.Description = tbDescription.Text;
-        updatedProduct.Name = tbName.Text;
-        updatedProduct.Price = decimal.Parse(tbPrice.Text);
-        updatedProduct.Size = int.Parse(tbSize.Text);
-        updatedProduct.UPC = tbUPC.Text;
-        updatedProduct.WineSweetnessIndex = ddlCategoryName.SelectedValue.ToString();
+            updatedProduct.CategoryID = int.Parse(ddlCategoryName.SelectedValue);
+            updatedProduct.CategoryName = ddlCategoryName.SelectedItem.Text;
+            updatedProduct.Company = tbCompany.Text;
+            updatedProduct.CountryOfOrigin = tbCountryOfOrigin.Text;
+            updatedProduct.Description = tbDescription.Text;
+            updatedProduct.Name = tbName.Text;
+            updatedProduct.Price = decimal.Parse(tbPrice.Text);
+            updatedProduct.Size = int.Parse(tbSize.Text);
+            updatedProduct.UPC = tbUPC.Text;
+            updatedProduct.WineSweetnessIndex = ddlCategoryName.SelectedValue.ToString();
+            updatedProduct.ImageUrl = ItemImage.AlternateText;
 
-        if(!fuImage.HasFile)
-            updatedProduct.ImageUrl = ItemImage.ImageUrl;
+            //fuImage.SaveAs(Server.MapPath("~/UploadImage/" + fuImage.FileName));
+            //ItemImage.ImageUrl = "/UploadImage/" + fuImage.FileName;
+            //updatedProduct.ImageUrl = Server.MapPath("~/UploadImage/" + fuImage.FileName);
+
+            if (requestDirector.UpdateProduct(updatedProduct))
+            {
+                lblConfirmation.Text = "Successfully update product";
+                if (!File.Exists(Server.MapPath("~/Images/" + updatedProduct.CategoryName + "/" + ItemImage.AlternateText)))
+                    File.Copy(Server.MapPath(ItemImage.ImageUrl), Server.MapPath("~/Images/" + updatedProduct.CategoryName + "/" + ItemImage.AlternateText));
+            }
+            else
+                lblConfirmation.Text = "Unable to update product";
+        }
         else
         {
-            if(fuImage.FileName != "")
-            {
-                fuImage.SaveAs(Server.MapPath("~/UploadImage/" + fuImage.FileName));
-
-                ItemImage.ImageUrl = "/UploadImage/" + fuImage.FileName;
-
-                updatedProduct.ImageUrl = Server.MapPath("~/UploadImage/" + fuImage.FileName);
-            }
-           
+            lblConfirmation.Text = "<span style='color:red;'>Please upload an image</span>";
         }
 
-        if (requestDirector.UpdateProduct(updatedProduct))
-            lblConfirmation.Text = "Successfully update product";
+
+    }
+
+    protected void UploadImageButton_Click(object sender, EventArgs e)
+    {
+        fuImage.SaveAs(Server.MapPath("~/UploadImage/" + fuImage.FileName));
+
+        ItemImage.ImageUrl = "/UploadImage/" + fuImage.FileName;
+        ItemImage.AlternateText = fuImage.FileName;
+    }
+
+    protected void ddlCategoryName_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (ddlCategoryName.SelectedValue == "3")
+            WineCategoryPanel.Visible = true;
         else
-            lblConfirmation.Text = "Unable to update product";
+            WineCategoryPanel.Visible = false;
     }
 }
