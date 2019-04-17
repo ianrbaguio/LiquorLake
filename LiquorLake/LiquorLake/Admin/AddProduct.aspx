@@ -4,6 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div style="width: 60%; margin: 0 auto; text-align: center;">
+        <asp:HyperLink ID="AdminDefaultHyperLink" NavigateUrl="~/Admin/AdminDefault.aspx" runat="server">Home</asp:HyperLink>
         <h2>ADD NEW PRODUCT</h2>
         <br />
         <div id="ImageDiv" style="padding: 10px;">

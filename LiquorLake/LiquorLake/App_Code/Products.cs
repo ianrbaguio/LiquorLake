@@ -271,7 +271,7 @@ public class Products
         updateParameter = new SqlParameter()
         {
             ParameterName = "@Price",
-            SqlDbType = SqlDbType.VarChar,
+            SqlDbType = SqlDbType.Money,
             SqlValue = p.Price,
             Direction = ParameterDirection.Input
         };

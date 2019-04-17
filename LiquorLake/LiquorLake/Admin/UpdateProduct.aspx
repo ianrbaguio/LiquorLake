@@ -4,6 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div style="text-align: center; width: 100%; padding: 25px;">
+        <asp:HyperLink ID="AdminDefaultHyperLink" NavigateUrl="~/Admin/AdminDefault.aspx" runat="server">Home</asp:HyperLink>
         <h2>UPDATE PRODUCT</h2>
         Search by Name<asp:TextBox ID="tbSearchProduct" runat="server"></asp:TextBox>
         <asp:Button ID="btnSearchProduct" runat="server" Text="Find Product" OnClick="btnSearchProduct_Click" />

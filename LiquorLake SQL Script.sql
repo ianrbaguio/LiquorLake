@@ -129,7 +129,7 @@ AS
 	WHERE Product.CategoryID = CASE WHEN @CategoryID IS NULL OR @CategoryID = 0 THEN Product.CategoryID ELSE @CategoryID END
 GO
 
-
+-- DROP PROCEDURE GetCategories
 CREATE PROCEDURE GetCategories
 AS
 	SELECT CategoryID,
@@ -138,6 +138,7 @@ AS
 	FROM Categories
 GO
 
+-- DROP PROCEDURE SearchProducts
 CREATE PROCEDURE SearchProducts(@Keyword varchar(100) = NULL)
 AS
 
@@ -161,6 +162,7 @@ ELSE
 	WHERE Product.Name LIKE '%'+ @Keyword +'%' OR Product.Description LIKE '%' + @Keyword + '%'
 GO
 
+-- DROP PROCEDURE ProductDetails
 CREATE PROCEDURE ProductDetails(@UPC VARCHAR(20) = NULL)
 AS
 	DECLARE @ReturnCode INT
@@ -194,6 +196,8 @@ AS
 	RETURN @ReturnCode
 GO
 
+
+-- DROP PROCEDURE AddProduct
 CREATE PROCEDURE AddProduct(@UPC VARCHAR(20) = NULL, @CategoryID INT = NULL, @Name NVARCHAR(50) = NULL, @Price MONEY = NULL, @Size INT = NULL, @CountryOfOrigin NVARCHAR(15) = NULL,
 						    @WineSweetnessIndex NVARCHAR(15) = NULL, @Image NVARCHAR(50) = NULL, @Company NVARCHAR(100) = NULL, @Description NVARCHAR(250) = NULL)
 AS
@@ -246,6 +250,7 @@ ELSE
 RETURN @ReturnCode
 go
 
+-- DROP PROCEDURE UpdateProduct
 CREATE PROCEDURE UpdateProduct(@UPC VARCHAR(20) = NULL, @CategoryID INT = NULL, @Name NVARCHAR(50) = NULL, @Price MONEY = NULL, @Size INT = NULL, @CountryOfOrigin NVARCHAR(15) = NULL,
 						    @WineSweetnessIndex NVARCHAR(15) = NULL, @Image NVARCHAR(50) = NULL, @Company NVARCHAR(100) = NULL, @Description NVARCHAR(250) = NULL)
 AS
@@ -289,6 +294,7 @@ ELSE
 		CategoryID = @CategoryID,
 		Name = @Name,
 		Size = @Size,
+		Price = @Price,
 		CountryOfOrigin = @CountryOfOrigin,
 		WineSweetnessIndex = @WineSweetnessIndex,
 		Image = @Image,
@@ -306,6 +312,8 @@ ELSE
 RETURN @ReturnCode
 go
 
+
+-- DROP PROCEDURE DeleteProduct
 CREATE PROCEDURE DeleteProduct(@UPC VARCHAR(20) = NULL)
 AS
 	DECLARE @ReturnCode INT
@@ -376,3 +384,4 @@ AS
 GO
 
 
+SELECT * FROM Users
