@@ -8,16 +8,14 @@
 
     <hr />
 
-    <asp:Table ID="ProductsTable" runat="server"></asp:Table>
-
-    <asp:Panel ID="ProductInfoPanel" runat="server" Visible="false">
+     <asp:Panel ID="ProductInfoPanel" runat="server" Visible="false">
         <asp:TextBox ID="tbUPC" runat="server"></asp:TextBox>
         <asp:TextBox ID="tbName" runat="server"></asp:TextBox>
         <br />
         <asp:DropDownList ID="ddlCategoryName" runat="server" AutoPostBack="true">
-            <asp:ListItem Value="1" Text="Wine">Wine</asp:ListItem>
-            <asp:ListItem Value="2" Text="Beer">Beer</asp:ListItem>
-            <asp:ListItem Value="3" Text="Spirit">Spirit</asp:ListItem>
+            <asp:ListItem Value="3" Text="Wine">Wine</asp:ListItem>
+            <asp:ListItem Value="1" Text="Beer">Beer</asp:ListItem>
+            <asp:ListItem Value="2" Text="Spirit">Spirit</asp:ListItem>
         </asp:DropDownList>
         <asp:TextBox ID="tbPrice" runat="server"></asp:TextBox>
         <asp:TextBox ID="tbSize" runat="server"></asp:TextBox>
@@ -46,6 +44,10 @@
         <asp:Label ID="lblConfirmation" runat="server" Text=""></asp:Label>
 
     </asp:Panel>
+
+    <asp:Table ID="ProductsTable" runat="server" GridLines="Both"></asp:Table>
+
+   
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="jQueryPlaceHolder" runat="Server">

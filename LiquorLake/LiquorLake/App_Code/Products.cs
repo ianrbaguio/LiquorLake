@@ -290,7 +290,7 @@ public class Products
         {
             ParameterName = "@WineSweetnessIndex",
             SqlDbType = SqlDbType.VarChar,
-            SqlValue = p.CountryOfOrigin,
+            SqlValue = p.WineSweetnessIndex,
             Direction = ParameterDirection.Input
         };
 
@@ -300,7 +300,7 @@ public class Products
         {
             ParameterName = "@Image",
             SqlDbType = SqlDbType.VarChar,
-            SqlValue = p.CountryOfOrigin,
+            SqlValue = p.ImageUrl,
             Direction = ParameterDirection.Input
         };
 
@@ -310,7 +310,18 @@ public class Products
         {
             ParameterName = "@Company",
             SqlDbType = SqlDbType.VarChar,
-            SqlValue = p.CountryOfOrigin,
+            SqlValue = p.Company,
+            Direction = ParameterDirection.Input
+        };
+
+        UpdateProductCMD.Parameters.Add(updateParameter);
+
+
+        updateParameter = new SqlParameter()
+        {
+            ParameterName = "@Description",
+            SqlDbType = SqlDbType.VarChar,
+            SqlValue = p.Description,
             Direction = ParameterDirection.Input
         };
 

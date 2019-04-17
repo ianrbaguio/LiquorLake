@@ -16,7 +16,6 @@ GO
 USE LiquorLake
 GO
 
-
 -- ******************* TABLE CREATIONS *******************************
 CREATE TABLE Categories(
 	CategoryID INT IDENTITY(1,1) NOT NULL,

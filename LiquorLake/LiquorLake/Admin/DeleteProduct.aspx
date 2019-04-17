@@ -15,6 +15,11 @@
                 <asp:TextBox ID="tbFilter" runat="server"></asp:TextBox>
 
                 <asp:Button ID="btnSearchProduct" runat="server" Text="Search Product" />
+
+                <div style="text-align:right">
+                    <asp:Label ID="lblConfirmation" runat="server" Text="" Font-Size="Large"></asp:Label>
+                </div>
+                
             </div>
 
             <div>

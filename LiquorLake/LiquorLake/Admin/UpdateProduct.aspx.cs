@@ -9,10 +9,18 @@ public partial class Admin_UpdateProduct : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if(IsPostBack)
+        {
+            ListProducts();
+        }
     }
 
     protected void btnSearchProduct_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void ListProducts()
     {
         LLMS requestDirector = new LLMS();
 
@@ -80,6 +88,7 @@ public partial class Admin_UpdateProduct : System.Web.UI.Page
             };
 
             updateButton.Click += new EventHandler(Update_Click);
+
             buttonCell.Controls.Add(updateButton);
 
             tr.Cells.Add(buttonCell);
@@ -97,7 +106,7 @@ public partial class Admin_UpdateProduct : System.Web.UI.Page
             tr.Cells.Add(tc);
 
             tc = new TableCell();
-            tc.Text = p.Name;
+            tc.Text = p.Price.ToString();
             tr.Cells.Add(tc);
 
             tc = new TableCell();
@@ -135,6 +144,8 @@ public partial class Admin_UpdateProduct : System.Web.UI.Page
 
     private void Update_Click(object sender, EventArgs e)
     {
+        Response.Write("Clicked details");
+
         Button clicked = sender as Button;
         LLMS requestDirector = new LLMS();
 
@@ -152,8 +163,8 @@ public partial class Admin_UpdateProduct : System.Web.UI.Page
         tbDescription.Text = currentProduct.Description;
         tbCountryOfOrigin.Text = currentProduct.CountryOfOrigin;
         tbCompany.Text = currentProduct.Company;
-        ddlCategoryName.SelectedValue = currentProduct.WineSweetnessIndex;
-        ddlCategoryName.SelectedIndex = currentProduct.CategoryID;
+        ddlCategoryName.SelectedIndex = ddlCategoryName.Items.IndexOf(ddlCategoryName.Items.FindByText(currentProduct.CategoryName));
+        ddlSweetnessIndex.SelectedIndex = ddlSweetnessIndex.Items.IndexOf(ddlSweetnessIndex.Items.FindByText(currentProduct.WineSweetnessIndex));
         ItemImage = i;
         
     }
@@ -180,11 +191,15 @@ public partial class Admin_UpdateProduct : System.Web.UI.Page
             updatedProduct.ImageUrl = ItemImage.ImageUrl;
         else
         {
-            fuImage.SaveAs(Server.MapPath("~/UploadImage/" + fuImage.FileName));
+            if(fuImage.FileName != "")
+            {
+                fuImage.SaveAs(Server.MapPath("~/UploadImage/" + fuImage.FileName));
 
-            ItemImage.ImageUrl = "/UploadImage/" + fuImage.FileName;
+                ItemImage.ImageUrl = "/UploadImage/" + fuImage.FileName;
 
-            updatedProduct.ImageUrl = Server.MapPath("~/UploadImage/" + fuImage.FileName);
+                updatedProduct.ImageUrl = Server.MapPath("~/UploadImage/" + fuImage.FileName);
+            }
+           
         }
 
         if (requestDirector.UpdateProduct(updatedProduct))

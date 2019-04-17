@@ -93,7 +93,7 @@ public partial class Admin_DeleteProduct : System.Web.UI.Page
             tr.Cells.Add(tc);
 
             tc = new TableCell();
-            tc.Text = p.Name;
+            tc.Text = p.Price.ToString();
             tr.Cells.Add(tc);
 
             tc = new TableCell();
@@ -110,11 +110,10 @@ public partial class Admin_DeleteProduct : System.Web.UI.Page
 
             Image i = new Image();
             i.ImageUrl = "/Images/" + p.CategoryName + "/" + p.ImageUrl;
-            i.Width = 100;
-            i.Height = 100;
+            i.Width = 150;
+            i.Height = 150;
 
             tc = new TableCell();
-            //tc.Text = string.Format("<img src='{0}' />", i); <--- you are putting the actual image control as the image src another way to get this work/fix use i.ImageUrl
             tc.Controls.Add(i);
             tr.Cells.Add(tc);
 
@@ -139,10 +138,17 @@ public partial class Admin_DeleteProduct : System.Web.UI.Page
         LLMS requestDirector = new LLMS();
 
         if (requestDirector.RemoveProduct(upc))
-            Response.Write("<script>alert('Removed Item')</script>");
+        {
+            lblConfirmation.ForeColor = System.Drawing.Color.Green;
+            lblConfirmation.Text = "Successfully removed item: " + upc;
+        }
         else
-            Response.Write("<script>alert('Unable to remove Item')</script>");
+        {
+            lblConfirmation.ForeColor = System.Drawing.Color.Red;
+            lblConfirmation.Text = "Unable to remove item: " + upc;
+        }
 
-        Response.Redirect(Request.RawUrl);
+
+        Response.AddHeader("REFRESH", "3;URL=DeleteProduct.aspx");
     }
 }
